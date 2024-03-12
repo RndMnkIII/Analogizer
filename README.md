@@ -26,3 +26,9 @@ adquirir en diversos sitios pero deben de ser de los que usan conector USB3. Nec
   
 # Lista de cores con soporte para el Analogizer
 * https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission
+
+# Agradecimientos
+Quiero agradecer la ayuda y apoyo recibidos de las siguientes personas y grupos en relación con este proyecto:
+* @Denymetanol por su incansable ayuda y consejos y por dar un toque de estilismo al logo del Analogizer.
+* Al grupo de Telegram Analogue POCKET Español por sus comentarios, apoyo y sugerencias cerveceras ;-).
+* A todos los que de algún modo me han mostrado apoyo y me han animado a seguir con este proyecto.
