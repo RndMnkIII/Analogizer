@@ -1,5 +1,6 @@
 # Analogizer
 ![Analogizer Logo](https://github.com/RndMnkIII/Analogizer/blob/main/img/logo_resized_analogizer.jpg)
+
 Adaptador para la consola FPGA portatil Analogue Pocket que utiliza el puerto de expansión de cartuchos para generar salida de vídeo analogico RGB666 Sync a través de un puerto VGA y conectar mandos de control nativos de diferentes tipos (DB15, NES, SNES, PCEngine) utilizando
 la interfaz SNAC7 mediante un conector USB3.
 
@@ -22,6 +23,6 @@ adquirir en diversos sitios pero deben de ser de los que usan conector USB3. Nec
 * PCENGINE 2btn: mando nativo de dos botones de la consola TurboGrafx/PCEngine (requiere de arnés específico para su uso con el Analogizer).
 * PCENGINE 6btn: mando nativo de seis botones de la consola TurboGrafx/PCEngine (requiere de arnés específico para su uso con el Analogizer).
 * PCENGINE Multitap: adaptador multitap de 5 puertos. Solo admite mandos de 2 botones (requiere de arnés específico para su uso con el Analogizer).
-* 
+  
 # Lista de cores con soporte para el Analogizer
 * https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission
