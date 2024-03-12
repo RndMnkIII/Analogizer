@@ -13,3 +13,14 @@ adquirir en diversos sitios pero deben de ser de los que usan conector USB3. Nec
 * https://antoniovillena.com/product/splitter-for-official-mister/
 * https://manuferhi.com/p/snac-adapter-for-mister
 * https://ultimatemister.com/product/snac-db15-neogeo/
+
+# Lista de controladores nativos soportados por Analogizer (requiere del adaptador SNAC7 correspondiente):
+* DB15: mandos nativos de NeoGeo y mandos arcade con hasta 6 botones de acción siguiendo esquema de conexión DB15.
+* NES: mando nativo de la consola NES.
+* SNES: mando nativo de la consola SNES.
+* PCENGINE 2btn: mando nativo de dos botones de la consola TurboGrafx/PCEngine (requiere de arnés específico para su uso con el Analogizer).
+* PCENGINE 6btn: mando nativo de seis botones de la consola TurboGrafx/PCEngine (requiere de arnés específico para su uso con el Analogizer).
+* PCENGINE Multitap: adaptador multitap de 5 puertos. Solo admite mandos de 2 botones (requiere de arnés específico para su uso con el Analogizer).
+* 
+# Lista de cores de la Pocket con soporte para el Analogizer
+* https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission
