@@ -26,6 +26,7 @@ adquirir en diversos sitios pero deben de ser de los que usan conector USB3. Nec
   
 # Lista de cores con soporte para el Analogizer
 * https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission
+* https://github.com/RndMnkIII/Analogizer_Mazamars312_Neogeo_0.8.1
 
 # Agradecimientos
 Quiero agradecer la ayuda y apoyo recibidos de las siguientes personas y grupos en relación con este proyecto:

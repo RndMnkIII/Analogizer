@@ -74,7 +74,7 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     input wire i_rst, //Core general reset
     input wire conf_AB, //0 conf. A(default), 1 conf. B (see graph above)
     input wire [4:0] game_cont_type, //0-15 Conf. A, 16-31 Conf. B
-    input wire [1:0] game_cont_sample_rate, //0 compatibility mode (slowest), 1 normal mode, 2 fast mode, 3 superfast mode
+    input wire [2:0] game_cont_sample_rate, //0 compatibility mode (slowest), 1 normal mode, 2 fast mode, 3 superfast mode
     output reg [15:0] p1_btn_state,
     output reg [15:0] p2_btn_state,
     output reg busy,    
@@ -111,6 +111,7 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     localparam pce_fast_polling_freq      =  80_000; //  80_000 / 5 =  16K samples/sec PCE
     localparam pce_very_fast_polling_freq = 100_000; // 100_000 / 5 =  20K samples/sec PCE
 
+    localparam snes_compat_polling_freq        =   20_000; //                                           20_000 / 18 =  1.11K samples/sec NES/SNES
     localparam serlatch_compat_polling_freq    =   100_000; //  100_000 / 25 =  4K samples/sec DB15    100_000 / 18 =  5.55K samples/sec NES/SNES
     localparam serlatch_normal_polling_freq    =   200_000; //  200_000 / 25 =  8K samples/sec DB15    200_000 / 18 = 11.11K samples/sec NES/SNES
     localparam serlatch_fast_polling_freq      =   400_000; //  400_000 / 25 = 16K samples/sec DB15    400_000 / 18 = 22.22K samples/sec NES/SNES
@@ -136,6 +137,8 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     localparam [32:0] serlatch_fast_pstep    = serlatch_fast_pstep_[32:0];
     localparam [64:0] serlatch_very_fast_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) * serlatch_very_fast_polling_freq * 2) / 1000;
     localparam [32:0] serlatch_very_fast_pstep    = serlatch_very_fast_pstep_[32:0];
+    localparam [64:0] snes_compat_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) * snes_compat_polling_freq  * 2) / 1000;
+    localparam [32:0] snes_compat_pstep    = snes_compat_pstep_[32:0];
     
     //Supported game controller types
     localparam GC_DISABLED = 5'd0;
@@ -153,9 +156,9 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
 
     reg conf_AB_r;
     reg [4:0] game_cont_type_r;
-    reg [1:0] game_cont_sample_rate_r;
+    reg [2:0] game_cont_sample_rate_r;
     reg [32:0] strobe_step_size;
-    reg reset_clk_div;
+    reg reset_on_change;
 
     always @(posedge i_clk) begin
         //register SNAC settings
@@ -164,9 +167,9 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
         game_cont_sample_rate_r <= game_cont_sample_rate;
 
         //detect change of SNAC settings and reset clock divider and set new settings
-        reset_clk_div <= 1'b0;
+        reset_on_change <= 1'b0;
         if(i_rst || (game_cont_type_r != game_cont_type) || (game_cont_sample_rate_r != game_cont_sample_rate)) begin
-            reset_clk_div <= 1'b1;
+            reset_on_change <= 1'b1;
         end
     end
 
@@ -184,6 +187,8 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
                     1: begin strobe_step_size <= serlatch_normal_pstep;    end
                     2: begin strobe_step_size <= serlatch_fast_pstep;      end
                     3: begin strobe_step_size <= serlatch_very_fast_pstep; end 
+                    4: begin strobe_step_size <= snes_compat_pstep;        end 
+                    default: begin strobe_step_size <= serlatch_compat_pstep ;  end
                 endcase
             end
             GC_PCE_2BTN, GC_PCE_6BTN, GC_PCE_MULTITAP: begin
@@ -193,6 +198,7 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
                     1: begin strobe_step_size <= pce_normal_pstep;    end
                     2: begin strobe_step_size <= pce_fast_pstep;      end
                     3: begin strobe_step_size <= pce_very_fast_pstep; end 
+                    default: begin strobe_step_size <= pce_compat_pstep;    end
                 endcase 
             end
             default: //disabled
@@ -226,7 +232,7 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     wire stb_clk /* synthesis keep */;
     clock_divider_fract ckdiv(
     .i_clk (i_clk),
-    .i_rst(reset_clk_div), //reset on polling freq change
+    .i_rst(reset_on_change), //reset on polling freq change
     .i_step(strobe_step_size[31:0]),
     .o_stb (stb_clk)
     );
@@ -242,7 +248,7 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     serlatch_game_controller #(.MASTER_CLK_FREQ(MASTER_CLK_FREQ)) slgc
     (
         .i_clk(i_clk),
-        .i_rst(i_rst),
+        .i_rst(reset_on_change),
         .game_controller_type(game_cont_type[2:0]), //1 DB15, 2 NES, 3 SNES
         .i_stb(stb_clk),
         .p1_btn_state(sl_p1),
@@ -264,7 +270,7 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     pcengine_game_controller #(.MASTER_CLK_FREQ(MASTER_CLK_FREQ), .PULSE_CLR_LINE(1'b1)) pcegc1
     (
         .i_clk(i_clk),
-        .i_rst(i_rst),
+        .i_rst(reset_on_change),
         .game_controller_type(game_cont_type), //4 2btn, 5 6btn
         .i_stb(stb_clk),
         .player_btn_state(pce_p1),
@@ -281,7 +287,7 @@ wire PCE_MULTITAP_SNAC_OUT1, PCE_MULTITAP_SNAC_OUT2;
 pcengine_game_controller_multitap #(.MASTER_CLK_FREQ(MASTER_CLK_FREQ)) pcegmultitap
 (
         .i_clk(i_clk),
-        .i_rst(i_rst),
+        .i_rst(reset_on_change),
         .game_controller_type(game_cont_type), //6 multitap
         .i_stb(stb_clk),
         .player1_btn_state(pce_multitap_p1),
