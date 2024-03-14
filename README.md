@@ -1,7 +1,7 @@
 # Analogizer
 ![Analogizer Logo](https://github.com/RndMnkIII/Analogizer/blob/main/img/logo_resized_analogizer.jpg)
 
-![English Version](https://github.com/RndMnkIII/Analogizer/blob/main/README_en.md)
+[English Version](https://github.com/RndMnkIII/Analogizer/blob/main/README_en.md)
 
 Adaptador para la consola FPGA portatil Analogue Pocket que utiliza el puerto de expansión de cartuchos para generar salida de vídeo analogico RGB666 Sync a través de un puerto VGA y conectar mandos de control nativos de diferentes tipos (DB15, NES, SNES, PCEngine) utilizando
 la interfaz SNAC7 mediante un conector USB3.
@@ -9,6 +9,9 @@ la interfaz SNAC7 mediante un conector USB3.
 # ¿Qué necesitas para utilizarlo?
 Si tu intención es usar la salida analógica de video, debes tener un dispositivo que pueda visualizar dicha señal de vídeo tal una una TV CRT con entrada SCART, o convertirla a otro formato utilizando
 un conversor como el OSSC o Retrotink. Un cable conversor de VGA a SCART.
+Se recomienda este cable debido a que está verificado que toma los +5V del pin 9 del conector VGA y se los pasa al pin 16 del conector SCART e incluye una resistencia de 470 Ohm en la señal CSYNC:
+![VGAtoSCARTcable](https://github.com/RndMnkIII/Analogizer/blob/main/img/cable_vga_scart_manuferhi.PNG)
+https://manuferhi.com/p/cable-rgb-scart-for-mister-mist-sidi-and-n-go
 Si quieres conectarlo a un monitor arcade vas a necesitar un cable VGA con conector doble hembra o gender changer y un adaptador VGA JAMMA para conectar a un monitor Arcade.
 El adaptador permite sacar señal nativa del core RGB sync, pero no te puedo decir todas las posibilidades para conectar a toda la infinidad de dispositivos que admiten este tipo de señal.
 Para utilizar un mando nativo DB15, NES, SNES o PCEngine vas a necesitar el correspondiente adaptador SNAC tanto de tipo un solo mando como en configuración split para dos mandos. Estos los puedes
