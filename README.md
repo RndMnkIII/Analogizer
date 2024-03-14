@@ -9,9 +9,11 @@ la interfaz SNAC7 mediante un conector USB3.
 # ¿Qué necesitas para utilizarlo?
 Si tu intención es usar la salida analógica de video, debes tener un dispositivo que pueda visualizar dicha señal de vídeo tal una una TV CRT con entrada SCART, o convertirla a otro formato utilizando
 un conversor como el OSSC o Retrotink. Un cable conversor de VGA a SCART.
-Se recomienda este cable debido a que está verificado que toma los +5V del pin 9 del conector VGA y se los pasa al pin 16 del conector SCART e incluye una resistencia de 470 Ohm en la señal CSYNC:
+Se recomienda usar este cable con el Analogizer debido a que está verificado que toma los +5V del pin 9 del conector VGA y se los pasa al pin 16 del conector SCART e incluye una resistencia de 470 Ohm en la señal CSYNC:
 ![VGAtoSCARTcable](https://github.com/RndMnkIII/Analogizer/blob/main/img/cable_vga_scart_manuferhi.PNG)
+
 https://manuferhi.com/p/cable-rgb-scart-for-mister-mist-sidi-and-n-go
+
 Si quieres conectarlo a un monitor arcade vas a necesitar un cable VGA con conector doble hembra o gender changer y un adaptador VGA JAMMA para conectar a un monitor Arcade.
 El adaptador permite sacar señal nativa del core RGB sync, pero no te puedo decir todas las posibilidades para conectar a toda la infinidad de dispositivos que admiten este tipo de señal.
 Para utilizar un mando nativo DB15, NES, SNES o PCEngine vas a necesitar el correspondiente adaptador SNAC tanto de tipo un solo mando como en configuración split para dos mandos. Estos los puedes
@@ -20,6 +22,14 @@ adquirir en diversos sitios pero deben de ser de los que usan conector USB3. Nec
 * https://antoniovillena.com/product/splitter-for-official-mister/
 * https://manuferhi.com/p/snac-adapter-for-mister
 * https://ultimatemister.com/product/snac-db15-neogeo/
+
+En resumen vas a necesitar:
+* Un adaptador de corriente USB C que suministre alimentación de +5V al Analogizer a traver del conector lateral. Cualquier adaptador de los utilizados para cargar un teléfono moderno te puede servir o el mismo adaptador que incluye la Pocket.
+* Un cable de video. Ya sea un cable adaptador VGA a SCART (recomendado), a un cable VGA que se conecte a un adaptador JAMMA para utilizarlo en un mueble arcade. Incluye un cable de audio que se pueden conectar al conector de auriculares de la Pocket de 3.5mm para sacar el audio a través de la TV.
+* Si quieres utilizar SNAC: uno o dos mandos de tipo DB15, NES, SNES o PCENGINE 2btn, 6btn y/o MultiTap de PCEngine y su adaptador SNAC7 con conector USB3 correspondiente. Si el del tipo de los de Antonio Villena además un cable USB3 tipo A (macho-macho, de tipo cruzado). Para el resto de adaptadores se utiliza un cable USB3 tipo A extensor (hembra-macho, sin cruzar). La longitud de los cables: algo entre 0.5 y 1.5m.
+* Para usar los mandos PCEngine con el Analogizer es necesario utilizar adicionalmente un arnés que modifica el cableado USB3 y que se conecta entre el adaptador SNAC de PCengine y el Analogizer. Mas detalles de esto próximamente.
+El orden del cableado sería el siguiente:
+![PCEngine cable harness](https://github.com/RndMnkIII/Analogizer/blob/main/img/PCENGINE_USB3_SNAC_CABLE_HARNESS.png)
 
 # Lista de controladores nativos soportados por Analogizer (requiere del adaptador SNAC7 correspondiente):
 * DB15: mandos nativos de NeoGeo y mandos arcade con hasta 6 botones de acción siguiendo esquema de conexión DB15.
