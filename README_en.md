@@ -3,7 +3,7 @@
 
 Adapter for the Analogue Pocket portable FPGA console that uses the cartridge expansion port to generate analog RGB666 Sync video output through a VGA port and connect native control controllers of different types (DB15, NES, SNES, PCEngine) using the SNAC7 interface via a USB3 connector.
 
-# What do you need to use it?
+## What do you need to use it?
 If your intention is to use the analog video output, you must have a device that can display said video signal such as a CRT TV with SCART input, or convert it to another format using
 a converter like OSSC or Retrotink. A VGA to SCART converter cable.
 It is recommended to use this cable with the Analogizer because it is verified that it takes the +5V from pin 9 of the VGA connector and passes it to pin 16 of the SCART connector and includes a 470 Ohm resistor in the CSYNC signal:
@@ -30,19 +30,23 @@ I have left a diagram and a plate design to make the harness:
 ![Analogizer PCEngine Cable Harness 3D PCB](https://github.com/RndMnkIII/Analogizer/blob/main/img/3D_PCB_HARNESS.PNG)
 [PCB Gerbers](https://github.com/RndMnkIII/Analogizer/blob/main/analogizer/PCB)
 
-# List of native drivers supported by Analogizer (requires the corresponding SNAC7 adapter):
+## List of native drivers supported by Analogizer (requires the corresponding SNAC7 adapter):
 * DB15: native NeoGeo controllers and arcade controllers with up to 6 action buttons following DB15 connection scheme.
 * NES: native controller for the NES console.
 * SNES: native controller of the SNES console.
 * PCENGINE 2btn: native two-button controller for the TurboGrafx/PCEngine console (requires a specific harness for use with the Analogizer).
 * PCENGINE 6btn: native six-button controller for the TurboGrafx/PCEngine console (requires a specific harness for use with the Analogizer).
 * PCENGINE Multitap: 5-port multitap adapter. Only supports 2-button controls (requires a specific harness for use with the Analogizer).
-  
-# List of cores with Analogizer support
+
+## How to use?
+WARNING: I ​​am not responsible for the use you make of the adapter and for any possible damage that may occur due to misuse or connection of unsupported adapters or controls.
+![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/warning analogizer 20x20.png)
+
+## List of cores with Analogizer support
 * https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission
 * https://github.com/RndMnkIII/Analogizer_Mazamars312_Neogeo_0.8.1
 
-# Thanks
+## Thanks
 I would like to acknowledge the help and support received from the following people and groups in relation to this project:
 * @Denymetanol for his tireless help and advice and for giving a touch of style to the Analogizer logo.
 * To the Telegram group Analogue POCKET Español for their comments, support and beer suggestions ;-).
