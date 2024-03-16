@@ -48,6 +48,12 @@ AVISO: No me hago responsable del uso que hagas del adaptador y de los posibles 
 
 ![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING.png)
 
+1. Insertar el Analogizer como se ve en la imagen, haciendo coincidir el extremo del cartucho con el puerto de cartuchos de la Analogue Pocket. Debe quedar encajado completamenta y sin que quede torcido. Los anclajes de la parte delantera deben encajar en el borde superior de la Pocket:
+![CARTRIDGE_PORT](https://github.com/RndMnkIII/Analogizer/blob/main/img/1710557132168.jpg)
+![INSERT1](https://github.com/RndMnkIII/Analogizer/blob/main/img/INSERT1.jpg)
+![INSERT2](https://github.com/RndMnkIII/Analogizer/blob/main/img/INSERT2.jpg)
+
+
 
 ## Lista de cores con soporte para el Analogizer
 * https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission

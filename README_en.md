@@ -43,6 +43,11 @@ WARNING: I ​​am not responsible for the use you make of the adapter and for 
 
 ![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING.png)
 
+1. Insert the Analogizer as seen in the image, matching the end of the cartridge with the cartridge port of the Analogue Pocket. It should fit completely and without being twisted. The anchors on the front must fit into the top edge of the Pocket:
+![CARTRIDGE_PORT](https://github.com/RndMnkIII/Analogizer/blob/main/img/1710557132168.jpg)
+![INSERT1](https://github.com/RndMnkIII/Analogizer/blob/main/img/INSERT1.jpg)
+![INSERT2](https://github.com/RndMnkIII/Analogizer/blob/main/img/INSERT2.jpg)
+
 ## List of cores with Analogizer support
 * https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission
 * https://github.com/RndMnkIII/Analogizer_Mazamars312_Neogeo_0.8.1
