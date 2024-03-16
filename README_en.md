@@ -8,6 +8,7 @@ If your intention is to use the analog video output, you must have a device that
 a converter like OSSC or Retrotink. A VGA to SCART converter cable.
 It is recommended to use this cable with the Analogizer because it is verified that it takes the +5V from pin 9 of the VGA connector and passes it to pin 16 of the SCART connector and includes a 470 Ohm resistor in the CSYNC signal:
 ![VGAtoSCARTcable](https://github.com/RndMnkIII/Analogizer/blob/main/img/cable_vga_scart_manuferhi.PNG)
+(https://manuferhi.com/p/cable-rgb-scart-for-mister-mist-sidi-and-n-go)
 If you want to connect it to an arcade monitor you will need a VGA cable with a double female connector or gender changer and a VGA JAMMA adapter to connect to an Arcade monitor.
 The adapter allows you to output a native signal from the RGB sync core, but I can't tell you all the possibilities to connect to all the countless devices that support this type of signal.
 To use a native DB15, NES, SNES or PCEngine controller you will need the corresponding SNAC adapter, both a single controller and a split configuration for two controllers. You can do these
