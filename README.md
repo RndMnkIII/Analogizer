@@ -3,7 +3,7 @@
 
 [English Version](https://github.com/RndMnkIII/Analogizer/blob/main/README_en.md)
 
-Adaptador para la consola FPGA portatil Analogue Pocket que utiliza el puerto de expansión de cartuchos para generar salida de vídeo analogico RGB666 Sync a través de un puerto VGA y conectar mandos de control nativos de diferentes tipos (DB15, NES, SNES, PCEngine) utilizando
+Adaptador para el sistema FPGA portatil Analogue Pocket que utiliza el puerto de expansión de cartuchos para generar salida de vídeo analogico RGB (18bit) Sync a través de un puerto VGA y conectar mandos de juegos nativos de diferentes tipos (DB15, NES, SNES, PCEngine) utilizando
 la interfaz SNAC7 mediante un conector USB3.
 
 ## ¿Qué necesitas para utilizarlo?
@@ -26,7 +26,7 @@ adquirir en diversos sitios pero deben de ser de los que usan conector USB3. Nec
 En resumen vas a necesitar:
 * Un adaptador de corriente USB C que suministre alimentación de +5V al Analogizer a traver del conector lateral. Cualquier adaptador de los utilizados para cargar un teléfono moderno te puede servir o el mismo adaptador que incluye la Pocket.
 * Un cable de video. Ya sea un cable adaptador VGA a SCART (recomendado), a un cable VGA que se conecte a un adaptador JAMMA para utilizarlo en un mueble arcade. Incluye un cable de audio que se pueden conectar al conector de auriculares de la Pocket de 3.5mm para sacar el audio a través de la TV.
-* Si quieres utilizar SNAC: uno o dos mandos de tipo DB15, NES, SNES o PCENGINE 2btn, 6btn y/o MultiTap de PCEngine y su adaptador SNAC7 con conector USB3 correspondiente. Si el del tipo de los de Antonio Villena además un cable USB3 tipo A (macho-macho, de tipo cruzado). Para el resto de adaptadores se utiliza un cable USB3 tipo A extensor (hembra-macho, sin cruzar). La longitud de los cables: algo entre 0.5 y 1.5m.
+* Si quieres utilizar SNAC: uno o dos mandos de tipo DB15, NES, SNES o PCENGINE 2btn, 6btn y/o MultiTap de PCEngine y su adaptador SNAC7 con conector USB3 correspondiente. Si es  del tipo de los de Antonio Villena además un cable USB3 tipo A (macho-macho, de tipo cruzado). Para el resto de adaptadores se utiliza un cable USB3 tipo A extensor (hembra-macho, sin cruzar). La longitud de los cables: algo entre 0.5 y 1.5m.
 * Para usar los mandos PCEngine con el Analogizer es necesario utilizar adicionalmente un arnés que modifica el cableado USB3 y que se conecta entre el adaptador SNAC de PCengine y el Analogizer. Mas detalles de esto próximamente.
 El orden del cableado sería el siguiente:
 ![Analogizer PCEngine Cable Harness](https://github.com/RndMnkIII/Analogizer/blob/main/img/PCENGINE_SNAC_HARNESS.png)
