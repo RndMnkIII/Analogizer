@@ -45,6 +45,7 @@ He dejado un esquema y un diseño de placa para fabricar el arnés:
   
 ## ¿Cómo utilizarlo?
 AVISO: No me hago responsable del uso que hagas del adaptador y de los posibles daños que pueda producir por el mal uso o conexión de adaptadores o mandos no soportados.
+
 ![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING.png)
 
 
