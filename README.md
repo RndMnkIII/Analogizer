@@ -31,6 +31,10 @@ En resumen vas a necesitar:
 El orden del cableado sería el siguiente:
 ![Analogizer PCEngine Cable Harness](https://github.com/RndMnkIII/Analogizer/blob/main/img/PCENGINE_SNAC_HARNESS.png)
 
+He dejado un esquema y un diseño de placa para fabricar el arnés:
+![Analogizer PCEngine Cable Harness 3D PCB](https://github.com/RndMnkIII/Analogizer/blob/main/img/3D_PCB_HARNESS.PNG)
+[PCB Gerbers](https://github.com/RndMnkIII/Analogizer/blob/main/analogizer/PCB)
+
 # Lista de controladores nativos soportados por Analogizer (requiere del adaptador SNAC7 correspondiente):
 * DB15: mandos nativos de NeoGeo y mandos arcade con hasta 6 botones de acción siguiendo esquema de conexión DB15.
 * NES: mando nativo de la consola NES.
