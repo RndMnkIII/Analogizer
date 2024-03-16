@@ -29,7 +29,7 @@ The wiring order would be as follows:
 
 I have left a diagram and a plate design to make the harness:
 ![Analogizer PCEngine Cable Harness 3D PCB](https://github.com/RndMnkIII/Analogizer/blob/main/img/3D_PCB_HARNESS.PNG)
-[PCB Gerber](https://github.com/RndMnkIII/Analogizer/blob/main/analogizer/PCB)
+[PCB Design](https://oshwlab.com/rndmnkiv/pcengine_cable_harness_snac)
 
 ## List of native drivers supported by Analogizer (requires the corresponding SNAC7 adapter):
 * DB15: native NeoGeo controllers and arcade controllers with up to 6 action buttons following DB15 connection scheme.
