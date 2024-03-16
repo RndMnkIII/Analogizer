@@ -13,6 +13,7 @@ The adapter allows you to output a native signal from the RGB sync core, but I c
 To use a native DB15, NES, SNES or PCEngine controller you will need the corresponding SNAC adapter, both a single controller and a split configuration for two controllers. You can do these
 You can buy them from various places but they must be ones that use a USB3 connector. You will need a USB3 extension or male-male cable (if you use Antonio Villena's SNAC adapters).
 * https://manuferhi.com/p/cable-rgb-scart-for-mister-mist-sidi-and-n-go
+* https://ultimatemister.com/product/rgb-scart-cable/
 * https://antoniovillena.com/product/splitter-for-official-mister/
 * https://manuferhi.com/p/snac-adapter-for-mister
 * https://ultimatemister.com/product/snac-db15-neogeo/
