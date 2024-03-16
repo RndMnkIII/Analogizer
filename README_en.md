@@ -54,14 +54,16 @@ WARNING: I ​​am not responsible for the use you make of the adapter and for 
 
 3. Connect the VGA connector of the VGA to SCART adapter cable (see section What do you need to use it?) to the VGA port of the Analogizer.
 4. Connect the SNAC adapter cable chosen for the type of controller we want to use (DB15, NES, SNES, PCENGINE, PCENGINE MULTITAP) to the SNAC port. Previously we will have connected the game controller to the corresponding SNAC adapter:
-5. ![FRONT](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_FRONT_SIDE.jpg)
+![FRONT](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_FRONT_SIDE.jpg)
    
-6. Connect the 3.5mm jack connector of the VGA to SCART adapter cable to the headphone port of the Analogue Pocket.
-7. Connect a 5V USB C power supply to the +5V power port of the Analogizer (you can use any power adapter from a phone with a USB C port or the same adapter from the Analogue Pocket):
-8. ![PWR](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_USB_C_PWR.jpg)
+5. Connect the 3.5mm jack connector of the VGA to SCART adapter cable to the headphone port of the Analogue Pocket:
+![AB_SW](https://github.com/RndMnkIII/Analogizer/blob/main/img/audio_jack.png)
    
-9. Turn on the Analogue Pocket and load an OpenFPGA core with support for the Analogizer.
-10. Make specific core settings for the Analogizer: choose the type of native controller connected, what type of controller we are going to use for each player (SNAC or Pocket game controllers), sampling rate of the controllers,...
+6. Connect a 5V USB C power supply to the +5V power port of the Analogizer (you can use any power adapter from a phone with a USB C port or the same adapter from the Analogue Pocket):
+![PWR](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_USB_C_PWR.jpg)
+   
+7.  Turn on the Analogue Pocket and load an OpenFPGA core with support for the Analogizer.
+8.  Make specific core settings for the Analogizer: choose the type of native controller connected, what type of controller we are going to use for each player (SNAC or Pocket game controllers), sampling rate of the controllers,...
 
 ## List of cores with Analogizer support
 * https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission

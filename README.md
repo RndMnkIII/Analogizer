@@ -59,14 +59,16 @@ AVISO: No me hago responsable del uso que hagas del adaptador y de los posibles 
 
 3. Conectar el conector VGA del cable adaptador de VGA a SCART (ver sección ¿Qué necesitas para utilizarlo? ) al puerto VGA del Analogizer.
 4. Conectar el cable del adaptador SNAC elegido para el tipo de mando que queremos usar (DB15, NES, SNES, PCENGINE, PCENGINE MULTITAP) al puerto SNAC. Previamente habremos conectado el mando de juegos al adaptador SNAC correspondiente:
-5. ![FRONT](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_FRONT_SIDE.jpg)
+![FRONT](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_FRONT_SIDE.jpg)
    
-6. Conectar el conector jack de 3.5mm del cable adaptador de VGA a SCART al puerto de auriculares de la Analogue Pocket.
-7. Conectar fuente de alimentación USB C de 5V al puerto de alimentación +5V del Analogizer (puedes usar cualquier adaptador de corriente de un teléfono con puerto USB C o el mismo adaptador de la Analogue Pocket):
-8.  ![PWR](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_USB_C_PWR.jpg)  
+5. Conectar el conector jack de 3.5mm del cable adaptador de VGA a SCART al puerto de auriculares de la Analogue Pocket:
+![AB_SW](https://github.com/RndMnkIII/Analogizer/blob/main/img/audio_jack.png)
+
+6. Conectar fuente de alimentación USB C de 5V al puerto de alimentación +5V del Analogizer (puedes usar cualquier adaptador de corriente de un teléfono con puerto USB C o el mismo adaptador de la Analogue Pocket):
+![PWR](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_USB_C_PWR.jpg)  
    
-9.  Encender la Analogue Pocket y cargar algún core OpenFPGA con soporte para el Analogizer.
-10. Realizar ajustes específicos del core para el Analogizer: elegir tipo de mando nativo conectado, que tipo de controlador vamos a usar para cada jugador (SNAC o mandos de juegos de la Pocket), velocidad de muestreo de los mandos,...
+7.  Encender la Analogue Pocket y cargar algún core OpenFPGA con soporte para el Analogizer.
+8.  Realizar ajustes específicos del core para el Analogizer: elegir tipo de mando nativo conectado, que tipo de controlador vamos a usar para cada jugador (SNAC o mandos de juegos de la Pocket), velocidad de muestreo de los mandos,...
 
 
 ## Lista de cores con soporte para el Analogizer
