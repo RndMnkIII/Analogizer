@@ -43,16 +43,25 @@ WARNING: I ​​am not responsible for the use you make of the adapter and for 
 
 ![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING.png)
 
-### Connectors and switches:
-![FRONT](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_FRONT_SIDE.jpg)
-![PWR](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_USB_C_PWR.jpg)
-![AB_SW](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_SWITCH_AB.jpg)
-
 ### How to connect the Analogizer?
 1. Insert the Analogizer as seen in the image, matching the end of the cartridge with the cartridge port of the Analogue Pocket. It should fit completely and without being twisted. The anchors on the front must fit into the top edge of the Pocket:
 ![CARTRIDGE_PORT](https://github.com/RndMnkIII/Analogizer/blob/main/img/1710557132168.jpg)
 ![INSERT1](https://github.com/RndMnkIII/Analogizer/blob/main/img/INSERT1.jpg)
 ![INSERT2](https://github.com/RndMnkIII/Analogizer/blob/main/img/INSERT2.jpg)
+
+2. Make sure the SNAC device configuration switch is in position A:
+![AB_SW](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_SWITCH_AB.jpg)
+
+3. Connect the VGA connector of the VGA to SCART adapter cable (see section What do you need to use it?) to the VGA port of the Analogizer.
+4. Connect the SNAC adapter cable chosen for the type of controller we want to use (DB15, NES, SNES, PCENGINE, PCENGINE MULTITAP) to the SNAC port. Previously we will have connected the game controller to the corresponding SNAC adapter:
+5. ![FRONT](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_FRONT_SIDE.jpg)
+   
+6. Connect the 3.5mm jack connector of the VGA to SCART adapter cable to the headphone port of the Analogue Pocket.
+7. Connect a 5V USB C power supply to the +5V power port of the Analogizer (you can use any power adapter from a phone with a USB C port or the same adapter from the Analogue Pocket):
+8. ![PWR](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_USB_C_PWR.jpg)
+   
+9. Turn on the Analogue Pocket and load an OpenFPGA core with support for the Analogizer.
+10. Make specific core settings for the Analogizer: choose the type of native controller connected, what type of controller we are going to use for each player (SNAC or Pocket game controllers), sampling rate of the controllers,...
 
 ## List of cores with Analogizer support
 * https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission

@@ -48,17 +48,25 @@ AVISO: No me hago responsable del uso que hagas del adaptador y de los posibles 
 
 ![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING.png)
 
-### Conectores e interruptores:
-![FRONT](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_FRONT_SIDE.jpg)
-![PWR](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_USB_C_PWR.jpg)
-![AB_SW](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_SWITCH_AB.jpg)
-
 ### ¿Como conectar el Analogizer?
 1. Insertar el Analogizer como se ve en la imagen, haciendo coincidir el extremo del cartucho con el puerto de cartuchos de la Analogue Pocket. Debe quedar encajado completamenta y sin que quede torcido. Los anclajes de la parte delantera deben encajar en el borde superior de la Pocket:
 ![CARTRIDGE_PORT](https://github.com/RndMnkIII/Analogizer/blob/main/img/1710557132168.jpg)
 ![INSERT1](https://github.com/RndMnkIII/Analogizer/blob/main/img/INSERT1.jpg)
 ![INSERT2](https://github.com/RndMnkIII/Analogizer/blob/main/img/INSERT2.jpg)
 
+2. Asegurarse el interruptor de configuración de dispositivo SNAC esta en la posición A:
+![AB_SW](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_SWITCH_AB.jpg)
+
+3. Conectar el conector VGA del cable adaptador de VGA a SCART (ver sección ¿Qué necesitas para utilizarlo? ) al puerto VGA del Analogizer.
+4. Conectar el cable del adaptador SNAC elegido para el tipo de mando que queremos usar (DB15, NES, SNES, PCENGINE, PCENGINE MULTITAP) al puerto SNAC. Previamente habremos conectado el mando de juegos al adaptador SNAC correspondiente:
+5. ![FRONT](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_FRONT_SIDE.jpg)
+   
+6. Conectar el conector jack de 3.5mm del cable adaptador de VGA a SCART al puerto de auriculares de la Analogue Pocket.
+7. Conectar fuente de alimentación USB C de 5V al puerto de alimentación +5V del Analogizer (puedes usar cualquier adaptador de corriente de un teléfono con puerto USB C o el mismo adaptador de la Analogue Pocket):
+8.  ![PWR](https://github.com/RndMnkIII/Analogizer/blob/main/img/ANALOGIZER_USB_C_PWR.jpg)  
+   
+9.  Encender la Analogue Pocket y cargar algún core OpenFPGA con soporte para el Analogizer.
+10. Realizar ajustes específicos del core para el Analogizer: elegir tipo de mando nativo conectado, que tipo de controlador vamos a usar para cada jugador (SNAC o mandos de juegos de la Pocket), velocidad de muestreo de los mandos,...
 
 
 ## Lista de cores con soporte para el Analogizer
