@@ -9,7 +9,7 @@ la interfaz SNAC7 mediante un conector USB3.
 ## ¿Qué necesitas para utilizarlo?
 Si tu intención es usar la salida analógica de video, debes tener un dispositivo que pueda visualizar dicha señal de vídeo tal una una TV CRT con entrada SCART, o convertirla a otro formato utilizando
 un conversor como el OSSC o Retrotink. Un cable conversor de VGA a SCART.
-Se recomienda usar este cable con el Analogizer debido a que está verificado que toma los +5V del pin 9 del conector VGA y se los pasa al pin 16 del conector SCART e incluye una resistencia de 470 Ohm en la señal CSYNC:
+Se recomienda usar este cable con el Analogizer debido a que está verificado que toma los +5V del pin 9 del conector VGA y se los pasa al pin 16 del conector SCART e incluye una resistencia de 470 Ohm en la señal CSYNC (recomiendo leer este articulo antes de comprar ningún cable https://www.retrorgb.com/beware-of-mister-scart-cables.html):
 ![VGAtoSCARTcable](https://github.com/RndMnkIII/Analogizer/blob/main/img/cable_vga_scart_manuferhi.PNG)
 
 https://manuferhi.com/p/cable-rgb-scart-for-mister-mist-sidi-and-n-go
