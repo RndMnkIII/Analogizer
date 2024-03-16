@@ -1,7 +1,7 @@
 # Analogizer
 ![Analogizer Logo](https://github.com/RndMnkIII/Analogizer/blob/main/img/logo_resized_analogizer.jpg)
 
-Adapter for the Analogue Pocket portable FPGA console that uses the cartridge expansion port to generate analog RGB666 Sync video output through a VGA port and connect native control controllers of different types (DB15, NES, SNES, PCEngine) using the SNAC7 interface via a USB3 connector.
+Adapter for the Analogue Pocket portable FPGA console that uses the cartridge expansion port to generate analog RGB (18bit) Sync video output through a VGA port and connect native game controllers of different types (DB15, NES, SNES, PCEngine) using the SNAC7 interface via SNAC (USB 3 type A) connector.
 
 ## What do you need to use it?
 If your intention is to use the analog video output, you must have a device that can display said video signal such as a CRT TV with SCART input, or convert it to another format using
