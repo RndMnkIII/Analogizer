@@ -23,7 +23,7 @@ In summary you will need:
 * If you want to use SNAC: one or two DB15, NES, SNES or PCENGINE 2btn, 6btn and/or MultiTap type controllers from PCEngine and its SNAC7 adapter with corresponding USB3 connector. Yes, the Antonio Villena type also has a USB3 type A cable (male-male, crossed type). For the rest of the adapters, a USB3 type A extender cable (female-male, uncrossed) is used. The length of the cables: something between 0.5 and 1.5m.
 * To use the PCEngine controls with the Analogizer it is necessary to additionally use a harness that modifies the USB3 wiring and connects between the PCengine SNAC adapter and the Analogizer. More details on this coming soon.
 The wiring order would be as follows:
-[[[SCHEMATIC GOES HERE]]]
+![Analogizer PCEngine Cable Harness](https://github.com/RndMnkIII/Analogizer/blob/main/img/PCENGINE_SNAC_HARNESS.png)
 
 # List of native drivers supported by Analogizer (requires the corresponding SNAC7 adapter):
 * DB15: native NeoGeo controllers and arcade controllers with up to 6 action buttons following DB15 connection scheme.
