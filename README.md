@@ -43,9 +43,9 @@ He dejado un esquema y un diseño de placa para fabricar el arnés:
 * PCENGINE 6btn: mando nativo de seis botones de la consola TurboGrafx/PCEngine (requiere de arnés específico para su uso con el Analogizer).
 * PCENGINE Multitap: adaptador multitap de 5 puertos. Solo admite mandos de 2 botones (requiere de arnés específico para su uso con el Analogizer).
   
-  ## ¿Cómo utilizarlo?
-  IMPORTANTE: No me hago responsable del uso que hagas del adaptador y de los posibles daños que pueda producir por el mal uso o conexión de adaptadores o mandos no soportados.
-  ![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/warning analogizer 20x20.png)
+## ¿Cómo utilizarlo?
+AVISO: No me hago responsable del uso que hagas del adaptador y de los posibles daños que pueda producir por el mal uso o conexión de adaptadores o mandos no soportados.
+![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING.png)
 
 
 ## Lista de cores con soporte para el Analogizer

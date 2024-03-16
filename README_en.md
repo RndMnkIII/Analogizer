@@ -40,7 +40,7 @@ I have left a diagram and a plate design to make the harness:
 
 ## How to use?
 WARNING: I ​​am not responsible for the use you make of the adapter and for any possible damage that may occur due to misuse or connection of unsupported adapters or controls.
-![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/warning analogizer 20x20.png)
+![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING.png)
 
 ## List of cores with Analogizer support
 * https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission
