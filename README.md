@@ -37,6 +37,8 @@ He dejado un esquema y un diseño de placa para fabricar el arnés:
 
 ## Lista de controladores nativos soportados por Analogizer (requiere del adaptador SNAC7 correspondiente):
 * DB15: mandos nativos de NeoGeo y mandos arcade con hasta 6 botones de acción siguiendo esquema de conexión DB15.
+![SNAC DB15 AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_DB15_Antonio_Villena.jpg)
+![SNAC DB15 UM](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_DB15_Splitter_UltimateMister.png)
 * NES: mando nativo de la consola NES.
 * SNES: mando nativo de la consola SNES.
 * PCENGINE 2btn: mando nativo de dos botones de la consola TurboGrafx/PCEngine (requiere de arnés específico para su uso con el Analogizer).
