@@ -33,11 +33,23 @@ I have left a diagram and a plate design to make the harness:
 
 ## List of native drivers supported by Analogizer (requires the corresponding SNAC7 adapter):
 * DB15: native NeoGeo controllers and arcade controllers with up to 6 action buttons following DB15 connection scheme.
+
+![SNAC DB15 AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_DB15_Antonio_Villena.jpg)
+![SNAC DB15 UM](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_DB15_Splitter_UltimateMister.png)
+
 * NES: native controller for the NES console.
+
+![SNAC NES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_NES_Splitter_Antonio_Villena.jpg)
+
 * SNES: native controller of the SNES console.
+
+![SNAC SNES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_SNES_Splitter_Antonio_Villena.jpg)
+
 * PCENGINE 2btn: native two-button controller for the TurboGrafx/PCEngine console (requires a specific harness for use with the Analogizer).
 * PCENGINE 6btn: native six-button controller for the TurboGrafx/PCEngine console (requires a specific harness for use with the Analogizer).
 * PCENGINE Multitap: 5-port multitap adapter. Only supports 2-button controls (requires a specific harness for use with the Analogizer).
+  
+![SNAC PCENGINE AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_PCEngine_Antonio_Villena.jpg)
 
 ## How to use?
 WARNING: I ​​am not responsible for the use you make of the adapter and for any possible damage that may occur due to misuse or connection of unsupported adapters or controls.
