@@ -40,12 +40,21 @@ He dejado un esquema y un diseño de placa para fabricar el arnés:
   
 ![SNAC DB15 AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_DB15_Antonio_Villena.jpg)
 ![SNAC DB15 UM](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_DB15_Splitter_UltimateMister.png)
+
 * NES: mando nativo de la consola NES.
+  
+![SNAC NES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_NES_Splitter_Antonio_Villena.jpg)
+
 * SNES: mando nativo de la consola SNES.
+  
+![SNAC NES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_SNES_Splitter_Antonio_Villena.jpg)
+
 * PCENGINE 2btn: mando nativo de dos botones de la consola TurboGrafx/PCEngine (requiere de arnés específico para su uso con el Analogizer).
 * PCENGINE 6btn: mando nativo de seis botones de la consola TurboGrafx/PCEngine (requiere de arnés específico para su uso con el Analogizer).
 * PCENGINE Multitap: adaptador multitap de 5 puertos. Solo admite mandos de 2 botones (requiere de arnés específico para su uso con el Analogizer).
   
+![SNAC NES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_PCEngine_Antonio_Villena.jpg)
+
 ## ¿Cómo utilizarlo?
 AVISO: No me hago responsable del uso que hagas del adaptador y de los posibles daños que pueda producir por el mal uso o conexión de adaptadores o mandos no soportados.
 
