@@ -111,6 +111,8 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     localparam pce_fast_polling_freq      =  80_000; //  80_000 / 5 =  16K samples/sec PCE
     localparam pce_very_fast_polling_freq = 100_000; // 100_000 / 5 =  20K samples/sec PCE
 
+    localparam Compat_60Hz_polling_freq        =   1_080; //  
+    localparam Compat_120Hz_polling_freq        =  2_160; //  
     localparam snes_compat_polling_freq        =   20_000; //                                           20_000 / 18 =  1.11K samples/sec NES/SNES
     localparam serlatch_compat_polling_freq    =   100_000; //  100_000 / 25 =  4K samples/sec DB15    100_000 / 18 =  5.55K samples/sec NES/SNES
     localparam serlatch_normal_polling_freq    =   200_000; //  200_000 / 25 =  8K samples/sec DB15    200_000 / 18 = 11.11K samples/sec NES/SNES
@@ -137,8 +139,14 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     localparam [32:0] serlatch_fast_pstep    = serlatch_fast_pstep_[32:0];
     localparam [64:0] serlatch_very_fast_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) * serlatch_very_fast_polling_freq * 2) / 1000;
     localparam [32:0] serlatch_very_fast_pstep    = serlatch_very_fast_pstep_[32:0];
+    
     localparam [64:0] snes_compat_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) * snes_compat_polling_freq  * 2) / 1000;
     localparam [32:0] snes_compat_pstep    = snes_compat_pstep_[32:0];
+
+    localparam [64:0] Compat_60Hz_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) * Compat_60Hz_polling_freq  * 2) / 1000;
+    localparam [32:0] Compat_60Hz_pstep    = Compat_60Hz_pstep_[32:0];
+    localparam [64:0] Compat_120Hz_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) * Compat_120Hz_polling_freq  * 2) / 1000;
+    localparam [32:0] Compat_120Hz_pstep    = Compat_120Hz_pstep_[32:0];
     
     //Supported game controller types
     localparam GC_DISABLED = 5'd0;
@@ -188,6 +196,8 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
                     2: begin strobe_step_size <= serlatch_fast_pstep;      end
                     3: begin strobe_step_size <= serlatch_very_fast_pstep; end 
                     4: begin strobe_step_size <= snes_compat_pstep;        end 
+                    5: begin strobe_step_size <= Compat_60Hz_pstep;        end
+                    6: begin strobe_step_size <= Compat_120Hz_pstep;       end
                     default: begin strobe_step_size <= serlatch_compat_pstep ;  end
                 endcase
             end
@@ -236,6 +246,17 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     .i_step(strobe_step_size[31:0]),
     .o_stb (stb_clk)
     );
+
+	 wire dbg_clk_w;
+	 reg dbg_clk /* synthesis noprune */;
+    clock_divider_fract dbgckdiv(
+    .i_clk (i_clk),
+    .i_rst(reset_on_change), //reset on polling freq change
+    .i_step({strobe_step_size[29:0],2'b00}),
+    .o_stb (dbg_clk_w)
+    );
+	 
+	 always @(posedge i_clk) dbg_clk <= dbg_clk_w;
 
     assign o_stb = stb_clk;
 

@@ -164,7 +164,7 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 				Bout = PbOut[7:2];
 				HsyncOut = 1'b1;
 				VsyncOut = YPbPr_sync; //to DAC SYNC pin, SWITCH SOG ON
-				BLANKnOut = 1'b1; // YPbPr_blank; //FIX with 1'b0 ???
+				BLANKnOut = 1'b0; // YPbPr_blank; //FIX with 1'b0 ???
 			end
 			default: begin
 				Rout = R[7:2];
