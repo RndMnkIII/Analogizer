@@ -52,7 +52,7 @@ I have left a diagram and a plate design to make the harness:
 ![SNAC PCENGINE AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_PCEngine_Antonio_Villena.jpg)
 
 ## How to use?
-WARNING: I ​​am not responsible for the use you make of the adapter and for any possible damage that may occur due to misuse or connection of unsupported adapters or controls.
+WARNING: I ​​am not responsible for the use you make of the adapter and for any possible damage that may occur due to misuse or connection of unsupported adapters or controls. The adapter is designed to fit optimally with a standard Pocket configuration without the use of screen protectors or other accessories that may alter the thickness or other dimensions of the console, I cannot be responsible for making specific adjustments due to the wide variety and thicknesses for this type of accessories for the Pocket, it is the user's responsibility to assess this before purchasing the Analogizer, depending on the design and thickness of the screen protector, it could cause the Adapter to not fit optimally or not fit at all.
 
 ![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING.png)
 

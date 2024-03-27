@@ -56,7 +56,7 @@ He dejado un esquema y un diseño de placa para fabricar el arnés:
 ![SNAC NES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_PCEngine_Antonio_Villena.jpg)
 
 ## ¿Cómo utilizarlo?
-AVISO: No me hago responsable del uso que hagas del adaptador y de los posibles daños que pueda producir por el mal uso o conexión de adaptadores o mandos no soportados.
+AVISO: No me hago responsable del uso que hagas del adaptador y de los posibles daños que pueda producir por el mal uso o conexión de adaptadores o mandos no soportados. El adaptador está diseñado para ajustar de forma óptima con una configuración estandar de Pocket sin uso de protectores de pantalla u otros accesorios que puedan alterar el grosor u otras dimensiones de la consola, no me puedo hacer cargo de realizar ajustes específicos debido a la gran variedad y grosores para este tipo de accesorios para la Pocket, es responsabilidad del usuario valorar esto antes de adquirir el Analogizer, dependiendo del diseño y grosor del protector de pantalla, podría provocar que el Adaptador no pueda ajustar de forma óptima o que no encaje de ninguna forma.
 
 ![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING.png)
 
