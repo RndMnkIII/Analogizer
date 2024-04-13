@@ -1,5 +1,5 @@
 # Analogizer
-![Analogizer Logo](https://github.com/RndMnkIII/Analogizer/blob/main/img/logo_resized_analogizer.jpg)
+![Analogizer Logo](https://github.com/RndMnkIII/Analogizer/blob/main/img/logo_Analogizer-FPGA.png)
 
 [English Version](https://github.com/RndMnkIII/Analogizer/blob/main/README_en.md)
 
