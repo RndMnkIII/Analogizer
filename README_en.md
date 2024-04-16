@@ -43,13 +43,11 @@ In summary you will need:
 * A USB C power adapter that supplies +5V power to the Analogizer through the side connector. Any adapter used to charge a modern phone can work or the same adapter that the Pocket includes.
 * A video cable. Either a VGA to SCART adapter cable (recommended), or a VGA cable that connects to a JAMMA adapter for use in an arcade cabinet. Includes an audio cable that can be connected to the Pocket's 3.5mm headphone jack to output audio through the TV.
 * If you want to use SNAC: one or two DB15, NES, SNES or PCENGINE 2btn, 6btn and/or MultiTap type controllers from PCEngine and its SNAC7 adapter with corresponding USB3 connector. Yes, the Antonio Villena type also has a USB3 type A cable (male-male, crossed type). For the rest of the adapters, a USB3 type A extender cable (female-male, uncrossed) is used. The length of the cables: something between 0.5 and 1.5m.
-* To use the PCEngine controls with the Analogizer it is necessary to additionally use a harness that modifies the USB3 wiring and connects between the PCengine SNAC adapter and the Analogizer. More details on this coming soon.
-The wiring order would be as follows:
-![Analogizer PCEngine Cable Harness](https://github.com/RndMnkIII/Analogizer/blob/main/img/PCENGINE_SNAC_HARNESS.png)
+* To use the PCEngine controls with the Analogizer it is necessary to additionally use a harness that modifies the USB3 wiring and connects between the PCengine SNAC adapter and the Analogizer.
 
-
-I have left a diagram and a plate design to make the harness:
-![Analogizer PCEngine Cable Harness 3D PCB](https://github.com/RndMnkIII/Analogizer/blob/main/img/3D_PCB_HARNESS.PNG)
+I have left a diagram and a plate design to make the harness or you can buy it in the online store:
+![Analogizer PCEngine Cable HarnessB](https://github.com/RndMnkIII/Analogizer/blob/main/img/PCENGINE_CABLE_HARNESS.jpg)
+![Analogizer PCEngine Cable Harness connecting](https://github.com/RndMnkIII/Analogizer/blob/main/img/como_conectar_cable_harness.jpg)
 [PCB Design](https://oshwlab.com/rndmnkiv/pcengine_cable_harness_snac)
 
 ## List of native drivers supported by Analogizer (requires the corresponding SNAC7 adapter):

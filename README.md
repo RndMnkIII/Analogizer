@@ -50,12 +50,11 @@ En resumen vas a necesitar:
 * Un adaptador de corriente USB C que suministre alimentación de +5V al Analogizer a traver del conector lateral. Cualquier adaptador de los utilizados para cargar un teléfono moderno te puede servir o el mismo adaptador que incluye la Pocket.
 * Un cable de video. Ya sea un cable adaptador VGA a SCART (recomendado), a un cable VGA que se conecte a un adaptador JAMMA para utilizarlo en un mueble arcade. Incluye un cable de audio que se pueden conectar al conector de auriculares de la Pocket de 3.5mm para sacar el audio a través de la TV.
 * Si quieres utilizar SNAC: uno o dos mandos de tipo DB15, NES, SNES o PCENGINE 2btn, 6btn y/o MultiTap de PCEngine y su adaptador SNAC7 con conector USB3 correspondiente. Si es  del tipo de los de Antonio Villena además un cable USB3 tipo A (macho-macho, de tipo cruzado). Para el resto de adaptadores se utiliza un cable USB3 tipo A extensor (hembra-macho, sin cruzar). La longitud de los cables: algo entre 0.5 y 1.5m.
-* Para usar los mandos PCEngine con el Analogizer es necesario utilizar adicionalmente un arnés que modifica el cableado USB3 y que se conecta entre el adaptador SNAC de PCengine y el Analogizer. Mas detalles de esto próximamente.
-El orden del cableado sería el siguiente:
-![Analogizer PCEngine Cable Harness](https://github.com/RndMnkIII/Analogizer/blob/main/img/PCENGINE_SNAC_HARNESS.png)
+* Para usar los mandos PCEngine con el Analogizer es necesario utilizar adicionalmente un arnés que modifica el cableado USB3 y que se conecta entre el adaptador SNAC de PCengine y el Analogizer.
 
-He dejado un esquema y un diseño de placa para fabricar el arnés:
-![Analogizer PCEngine Cable Harness 3D PCB](https://github.com/RndMnkIII/Analogizer/blob/main/img/3D_PCB_HARNESS.PNG)
+He dejado un esquema y un diseño de placa para fabricar el arnés o puedes comprarlo en la tienda online:
+![Analogizer PCEngine Cable HarnessB](https://github.com/RndMnkIII/Analogizer/blob/main/img/PCENGINE_CABLE_HARNESS.jpg)
+![Analogizer PCEngine Cable Harness connecting](https://github.com/RndMnkIII/Analogizer/blob/main/img/como_conectar_cable_harness.jpg)
 [PCB Design](https://oshwlab.com/rndmnkiv/pcengine_cable_harness_snac)
 
 ## Lista de controladores nativos soportados por Analogizer (requiere del adaptador SNAC7 correspondiente):
