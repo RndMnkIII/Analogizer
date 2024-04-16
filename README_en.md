@@ -1,8 +1,18 @@
 # Analogizer
 ![Analogizer Logo](https://github.com/RndMnkIII/Analogizer/blob/main/img/logo_Analogizer-FPGA.png)
+Online Store: https://www.analogizer-fpga.com
 
 Adapter for the Analogue Pocket portable FPGA system that uses the cartridge expansion port to output analog RGB (18bit) Sync video through a VGA port using ADV7123 DAC and connect native game controllers of different types (DB15, NES, SNES, PCEngine) using the SNAC7 interface via USB 3 type A connector.
 
+## NEW: Analogizer R2 (Improved):
+![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1711795943821.jpg)
+![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1712216898707.jpg)
+* Includes support for SOG (SYNC ON GREEN), includes a switch to activate/deactivate this function. You must enable RGsB or YPbPr output in the core menu adapted to use Analogizer. Allows you to connect the adapter to a CRT or other type of TV that has a component video input (see photo):
+ ![Component Video](https://github.com/RndMnkIII/Analogizer/blob/main/img/entrada_video_componentes.jpg)
+ And you can use a cable like this (VGA to component video):
+![VGA to Component Video Cable](https://github.com/RndMnkIII/Analogizer/blob/main/img/VGA_TO_COMPONENT_VIDEO_CABLE.png).
+* New case design with two tab options (for Pocket without tempered glass screen protector or for Pocket with tempered glass screen protector).
+* 
 ## What do you need to use it?
 If your intention is to use the analog video output, you must have a device that can display said video signal such as a CRT TV with SCART input, or convert it to another format using
 a converter like OSSC or Retrotink. A VGA to SCART converter cable.
@@ -79,9 +89,7 @@ DISCLAIMER: I am not responsible for your use of the adapter and any possible da
 8.  Make specific core settings for the Analogizer: choose the type of native controller connected, what type of controller we are going to use for each player (SNAC or Pocket game controllers), sampling rate of the controllers,...
 
 ## List of cores with Analogizer support
-* https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission
-* https://github.com/RndMnkIII/Analogizer_Mazamars312_Neogeo_0.8.1
-* https://github.com/RndMnkIII/openfpga-NES-Analogizer
+Search here https://openfpga-cores-inventory.github.io/analogue-pocket/ for "ANALOGIZER".
 
 ## Thanks
 I would like to acknowledge the help and support received from the following people and groups in relation to this project:

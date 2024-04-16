@@ -1,10 +1,21 @@
 # Analogizer
 ![Analogizer Logo](https://github.com/RndMnkIII/Analogizer/blob/main/img/logo_Analogizer-FPGA.png)
+Tienda Online: https://www.analogizer-fpga.com
 
 [English Version](https://github.com/RndMnkIII/Analogizer/blob/main/README_en.md)
 
 Adaptador para el sistema FPGA portatil Analogue Pocket que utiliza el puerto de expansión de cartuchos para generar salida de vídeo analogico RGB (18bit) Sync a través de un puerto VGA y conectar mandos de juegos nativos de diferentes tipos (DB15, NES, SNES, PCEngine) utilizando
 la interfaz SNAC7 mediante un conector USB3.
+
+## NUEVO: Analogizer R2 (Mejorado):
+![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1711795943821.jpg)
+![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1712216898707.jpg)
+* Incluye soporte para SOG (SYNC ON GREEN), incluye un interruptor para activar/desactivar dicha función. Hay que habilitar salida RGsB o YPbPr en el menú de los cores adaptados para usar Analogizer. Permite conectar el adaptador a una TV CRT o de otro tipo que tenga entrada de video por componentes (ver foto):
+ ![Component Video](https://github.com/RndMnkIII/Analogizer/blob/main/img/entrada_video_componentes.jpg) 
+ Y puedes usar un cable de este tipo (VGA to component video):
+![VGA to Component Video Cable](https://github.com/RndMnkIII/Analogizer/blob/main/img/VGA_TO_COMPONENT_VIDEO_CABLE.png).
+* Nuevo diseño de carcasa con dos opciones de pestañas (para Pocket sin protector de pantalla de cristal templado o para Pocket con protector de pantalla de cristal templado).
+  
 
 ## ¿Qué necesitas para utilizarlo?
 Si tu intención es usar la salida analógica de video, debes tener un dispositivo que pueda visualizar dicha señal de vídeo tal una una TV CRT con entrada SCART, o convertirla a otro formato utilizando
@@ -84,9 +95,7 @@ DESCARGO DE RESPONSABILIDAD: No me hago responsable del uso que hagas del adapta
 
 
 ## Lista de cores con soporte para el Analogizer
-* https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission
-* https://github.com/RndMnkIII/Analogizer_Mazamars312_Neogeo_0.8.1
-* https://github.com/RndMnkIII/openfpga-NES-Analogizer
+Busca aquí https://openfpga-cores-inventory.github.io/analogue-pocket/ el término "ANALOGIZER".
 
 ## Agradecimientos
 Quiero agradecer la ayuda y apoyo recibidos de las siguientes personas y grupos en relación con este proyecto:
