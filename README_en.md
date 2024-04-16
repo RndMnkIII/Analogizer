@@ -9,8 +9,11 @@ Adapter for the Analogue Pocket portable FPGA system that uses the cartridge exp
 ![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1712216898707.jpg)
 * Includes support for SOG (SYNC ON GREEN), includes a switch to activate/deactivate this function. You must enable RGsB or YPbPr output in the core menu adapted to use Analogizer. Allows you to connect the adapter to a CRT or other type of TV that has a component video input (see photo):
  ![Component Video](https://github.com/RndMnkIII/Analogizer/blob/main/img/entrada_video_componentes.jpg)
+
  And you can use a cable like this (VGA to component video):
+
 ![VGA to Component Video Cable](https://github.com/RndMnkIII/Analogizer/blob/main/img/VGA_TO_COMPONENT_VIDEO_CABLE.png).
+
 * New case design with two tab options (for Pocket without tempered glass screen protector or for Pocket with tempered glass screen protector).
 * 
 ## What do you need to use it?

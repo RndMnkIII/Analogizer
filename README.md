@@ -11,9 +11,13 @@ la interfaz SNAC7 mediante un conector USB3.
 ![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1711795943821.jpg)
 ![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1712216898707.jpg)
 * Incluye soporte para SOG (SYNC ON GREEN), incluye un interruptor para activar/desactivar dicha función. Hay que habilitar salida RGsB o YPbPr en el menú de los cores adaptados para usar Analogizer. Permite conectar el adaptador a una TV CRT o de otro tipo que tenga entrada de video por componentes (ver foto):
+* 
  ![Component Video](https://github.com/RndMnkIII/Analogizer/blob/main/img/entrada_video_componentes.jpg) 
+
  Y puedes usar un cable de este tipo (VGA to component video):
+ 
 ![VGA to Component Video Cable](https://github.com/RndMnkIII/Analogizer/blob/main/img/VGA_TO_COMPONENT_VIDEO_CABLE.png).
+
 * Nuevo diseño de carcasa con dos opciones de pestañas (para Pocket sin protector de pantalla de cristal templado o para Pocket con protector de pantalla de cristal templado).
   
 
