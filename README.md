@@ -14,9 +14,13 @@ la interfaz SNAC7 mediante un conector USB3.
 
 ![SOG](https://github.com/RndMnkIII/Analogizer/blob/main/img/SOG.jpg)
 
-* Hay que habilitar salida RGsB o YPbPr en el menú de los cores adaptados para usar Analogizer. Permite conectar el adaptador a una TV CRT o de otro tipo que tenga entrada de video por componentes (ver foto):
+* Hay que habilitar salida RGsB o YPbPr en el menú de los cores adaptados para usar Analogizer:
   
- ![Component Video](https://github.com/RndMnkIII/Analogizer/blob/main/img/entrada_video_componentes.jpg) 
+![video options](https://github.com/RndMnkIII/Analogizer/blob/main/img/ypbpr_video_options.jpg) 
+
+* Permite conectar el adaptador a una TV CRT o de otro tipo que tenga entrada de video por componentes (ver foto):
+  
+![Component Video](https://github.com/RndMnkIII/Analogizer/blob/main/img/entrada_video_componentes.jpg) 
 
  Y puedes usar un cable de este tipo (VGA to component video):
  

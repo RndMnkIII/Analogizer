@@ -11,7 +11,11 @@ Adapter for the Analogue Pocket portable FPGA system that uses the cartridge exp
 
 ![SOG](https://github.com/RndMnkIII/Analogizer/blob/main/img/SOG.jpg)
 
- You must enable RGsB or YPbPr output in the core menu adapted to use Analogizer. Allows you to connect the adapter to a CRT or other type of TV that has a component video input (see photo):
+ You must enable RGsB or YPbPr output in the core menu adapted to use Analogizer:
+
+ ![video options](https://github.com/RndMnkIII/Analogizer/blob/main/img/ypbpr_video_options.jpg) 
+ 
+ Allows you to connect the adapter to a CRT or other type of TV that has a component video input (see photo):
  ![Component Video](https://github.com/RndMnkIII/Analogizer/blob/main/img/entrada_video_componentes.jpg)
 
  And you can use a cable like this (VGA to component video):
