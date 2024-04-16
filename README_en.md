@@ -43,7 +43,7 @@ I have left a diagram and a plate design to make the harness:
 
 * SNES: native controller of the SNES console.
 
-![SNAC SNES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_SNES_Splitter_Antonio_Villena.jpg)
+![SNAC NES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/ultimate_mister_snes_snac.png)
 
 * PCENGINE 2btn: native two-button controller for the TurboGrafx/PCEngine console (requires a specific harness for use with the Analogizer).
 * PCENGINE 6btn: native six-button controller for the TurboGrafx/PCEngine console (requires a specific harness for use with the Analogizer).

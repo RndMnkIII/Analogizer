@@ -47,7 +47,7 @@ He dejado un esquema y un diseño de placa para fabricar el arnés:
 
 * SNES: mando nativo de la consola SNES.
   
-![SNAC NES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/SNAC_SNES_Splitter_Antonio_Villena.jpg)
+![SNAC NES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/ultimate_mister_snes_snac.png)
 
 * PCENGINE 2btn: mando nativo de dos botones de la consola TurboGrafx/PCEngine (requiere de arnés específico para su uso con el Analogizer).
 * PCENGINE 6btn: mando nativo de seis botones de la consola TurboGrafx/PCEngine (requiere de arnés específico para su uso con el Analogizer).
