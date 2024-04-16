@@ -10,8 +10,12 @@ la interfaz SNAC7 mediante un conector USB3.
 ## NUEVO: Analogizer R2 (Mejorado):
 ![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1711795943821.jpg)
 ![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1712216898707.jpg)
-* Incluye soporte para SOG (SYNC ON GREEN), incluye un interruptor para activar/desactivar dicha función. Hay que habilitar salida RGsB o YPbPr en el menú de los cores adaptados para usar Analogizer. Permite conectar el adaptador a una TV CRT o de otro tipo que tenga entrada de video por componentes (ver foto):
-* 
+* Incluye soporte para SOG (SYNC ON GREEN), incluye un interruptor para activar/desactivar dicha función:
+
+![SOG](https://github.com/RndMnkIII/Analogizer/blob/main/img/SOG.jpg)
+
+* Hay que habilitar salida RGsB o YPbPr en el menú de los cores adaptados para usar Analogizer. Permite conectar el adaptador a una TV CRT o de otro tipo que tenga entrada de video por componentes (ver foto):
+  
  ![Component Video](https://github.com/RndMnkIII/Analogizer/blob/main/img/entrada_video_componentes.jpg) 
 
  Y puedes usar un cable de este tipo (VGA to component video):
