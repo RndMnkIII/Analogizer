@@ -75,7 +75,7 @@ I have left a diagram and a plate design to make the harness:
 ## How to use?
 DISCLAIMER: I am not responsible for your use of the adapter and any possible damage that may occur due to misuse or connection of unsupported adapters or controls. The adapter is designed to fit optimally with a standard Pocket configuration without the use of screen protectors or other accessories that could alter the thickness or other dimensions of the console. I am going to offer an alternative version of the adapter with a case adapted to a 0.3mm tempered glass sheet, I cannot be responsible for making more specific adjustments due to the great variety and thicknesses for this type of accessories for the Pocket, it is the responsibility It is up to the user to consider this before purchasing the Analogizer, depending on the design and thickness of the screen protector, it could result in the Adapter not being able to fit optimally or not fitting at all.
 
-![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING.png)
+![WARNING](https://github.com/RndMnkIII/Analogizer/blob/main/img/WARNING_HQ.png)
 
 ### How to connect the Analogizer?
 1. Insert the Analogizer as seen in the image, matching the end of the cartridge with the cartridge port of the Analogue Pocket. It should fit completely and without being twisted. The anchors on the front must fit into the top edge of the Pocket:
