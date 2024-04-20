@@ -1,4 +1,4 @@
-# Analogizer
+# Analogizer-FPGA
 ![Analogizer Logo](https://github.com/RndMnkIII/Analogizer/blob/main/img/logo_Analogizer-FPGA.png)
 Tienda Online: https://www.analogizer-fpga.com
 
