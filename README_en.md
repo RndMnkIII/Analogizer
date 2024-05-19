@@ -24,6 +24,18 @@ Adapter for the Analogue Pocket portable FPGA system that uses the cartridge exp
 
 * New case design with two tab options (for Pocket without tempered glass screen protector or for Pocket with tempered glass screen protector).
   
+For output Y/C and composite video you need to select in Pocket's Menu: `Analogizer Video Out > Y/C NTSC` or `Analogizer Video Out > Y/C NTSC,Pocket OFF`. You can tune the phase accumulator
+with `Chroma Add` and `Chroma Multiply` sliders adjusting values between 0 and 31. Normally it is not necessary to modify the value of these settings.
+
+For output Scandoubler SVGA video you need to select in Pocket's Menu: `Analogizer Video Out > Scandoubler RGBHV`.
+
+You will need to connect an active VGA to Y/C adapter to the VGA port (the 5V power is provided by VGA pin 9). I'll recomend one of these (active):
+* [MiSTerAddons - Active Y/C Adapter](https://misteraddons.com/collections/parts/products/yc-active-encoder-board/)
+* [MikeS11 Active VGA to Composite / S-Video](https://ultimatemister.com/product/mikes11-active-composite-svideo/)
+* [Active VGA->Composite/S-Video adapter](https://antoniovillena.com/product/mikes1-vga-composite-adapter/)
+
+Using another type of Y/C adapter not tested to be used with Analogizer will not receive official support.
+
 ## What do you need to use it?
 If your intention is to use the analog video output, you must have a device that can display said video signal such as a CRT TV with SCART input, or convert it to another format using
 a converter like OSSC or Retrotink. A VGA to SCART converter cable.

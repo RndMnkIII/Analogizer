@@ -27,7 +27,19 @@ la interfaz SNAC7 mediante un conector USB3.
 ![VGA to Component Video Cable](https://github.com/RndMnkIII/Analogizer/blob/main/img/VGA_TO_COMPONENT_VIDEO_CABLE.png).
 
 * Nuevo diseño de carcasa con dos opciones de pestañas (para Pocket sin protector de pantalla de cristal templado o para Pocket con protector de pantalla de cristal templado).
-  
+
+
+Para salida de video Y/C necesitas seleccionar en el menú de la Pocket: `Analogizer Video Out > Y/C NTSC` or `Analogizer Video Out > Y/C NTSC,Pocket OFF`. En algunos cores puedes
+modificar el valor del acumulador de fase con los deslizadores  `Chroma Add` and `Chroma Multiply` ajustando el valor entre 0 y 31. Normalmente no es necesario modificar estos valores.
+
+Para salida de video Scandoubler SVGA necesitas seleccionar en el menú de la Pocket: `Analogizer Video Out > Scandoubler RGBHV`.
+
+Necesitas conectar un adaptador Y/C activo al puerto VGA de Analogizer (la alimentación de 5v la proporciona el pin 9 del puerto VGA). Recomiendo uno de estos adaptadores (activos):
+* [MiSTerAddons - Active Y/C Adapter](https://misteraddons.com/collections/parts/products/yc-active-encoder-board/)
+* [MikeS11 Active VGA to Composite / S-Video](https://ultimatemister.com/product/mikes11-active-composite-svideo/)
+* [Active VGA->Composite/S-Video adapter](https://antoniovillena.com/product/mikes1-vga-composite-adapter/)
+
+Utilizar otro tipo de adaptador Y/C que no se haya probado con Analogizer no recibirá soporte oficial.
 
 ## ¿Qué necesitas para utilizarlo?
 Si tu intención es usar la salida analógica de video, debes tener un dispositivo que pueda visualizar dicha señal de vídeo tal una una TV CRT con entrada SCART, o convertirla a otro formato utilizando
