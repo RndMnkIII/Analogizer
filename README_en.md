@@ -77,7 +77,7 @@ I have left a diagram and a plate design to make the harness or you can buy it i
 ![SNAC NES AV](https://github.com/RndMnkIII/Analogizer/blob/main/img/ultimate_mister_snes_snac.png)
 
 I have created this document where I will add the devices tested by users and their degree of compatibility:
-![Compatibility Device List (under work)](https://docs.google.com/spreadsheets/d/10iuDrmut3mm6FIIGvGas8eOBX_8D-Txi52ibHLDFC5w/edit?usp=sharing)
+https://docs.google.com/spreadsheets/d/10iuDrmut3mm6FIIGvGas8eOBX_8D-Txi52ibHLDFC5w/edit?usp=sharing
 
 * PCENGINE 2btn: native two-button controller for the TurboGrafx/PCEngine console (requires a specific harness for use with the Analogizer).
 * PCENGINE 6btn: native six-button controller for the TurboGrafx/PCEngine console (requires a specific harness for use with the Analogizer).
