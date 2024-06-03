@@ -1,10 +1,7 @@
 //This module encapsulates all Analogizer adapter signals
 // Original work by @RndMnkIII. 
-// Date: 05/2024 
-// Releases: 
-// 1.0 Initial RGBS output mode
-// 1.1 Added SOG modes: RGsB, YPbPt
-// 1.2 Added Mike Simon Y/C module, Scandoubler SVGA Mist module.     
+// Date: 04/2024 
+// Release: 1.1
 
 // *** Analogizer R.2 adapter ***
 // * WHEN SOG SWITCH IS IN ON POSITION, OUTPUTS CSYNC ON G CHANNEL
@@ -66,6 +63,85 @@
 //cart_tran_bank1[7] ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+     |     |
 //cart_tran_pin30    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+     | 
 //cart_tran_pin31    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+//  SNAC ADAPTER:
+//  ---------------
+//         31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
+//         -----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+//        | D| D| D| D| D| D| D| D| X| X| X| X| X| X| X| X| X| X| 1| 1| 1| 1| 1| 1| 1| 1| X| 0| 0| 0| 0| 0| 
+//         -----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+//  MASK        F           F           F           F           F           F           E           0
+
+// *** CONF. A *** 
+// 0x00 None
+// 0x01 DB15 Normal
+// 0x02 NES
+// 0x03 SNES
+// 0x04 PCENGINE 2Btn
+// 0x05 PCENGINE 6Btn
+// 0x06 PCENGINE Multitap
+// 0x07 
+// 0x08 
+// 0x09 DB15 Fast
+// 0x0A
+// 0x0B SNES A,B<->X,Y
+// 0x0C
+// 0x0D
+// 0x0E
+// 0x0F
+
+// *** CONF. B ***
+// 0x10 RESERVED FOR FUTURE USE
+// ...  ...
+// 0x1F RESERVED FOR FUTURE USE                                                                                
+
+
+// SNAC CONTROLLER ASSIGNMENT:
+// ---------------------------
+//         31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
+//        -----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+//       | D| D| D| D| D| D| D| D| X| X| X| X| X| X| X| X| X| X| 1| 1| 1| 1| 0| 0| 0| 0| X| 1| 1| 1| 1| 1| 
+//        -----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+// MASK        F           F           F           F           F           C           3           F                                    
+// 0x000 0x0 SNAC -> P1               
+// 0x040 0x1 SNAC -> P2
+// 0x080 0x2 SNAC P1,P2 -> P1,P2
+// 0x0C0 0x3 SNAC P1,P2 -> P2,P1
+// //For systems with 4 players
+// 0x100 0x4 SNAC P1-P4 -> P1-P4
+// 0x140 0X5 SNAC P1-P2 -> P3-P4
+// 0x180 0X6 SNAC P3-P4 -> P1-P2
+// 0x1C0 0X7 SNAC P1-P4 -> P4-P1
+
+// ANALOGIZER VIDEO OUT:
+// ------------------------
+//         31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
+//        -----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+//       | D| D| D| D| D| D| D| D| X| X| X| X| X| X| X| X| X| X| 0| 0| 0| 0| 1| 1| 1| 1| 1| 1| 1| 1| 1| 1| 
+//        -----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------
+// MASK        F           F           F           F           C           3           F           F       
+
+// 0x0000 0x0 RGBS
+// 0x0400 0x1 RGsB **
+// 0x0800 0x2 YPbPr **
+// 0x0C00 0x3 Scandoubler *
+// 0x1000 0x4
+// 0x1400 0x5
+// 0x1800 0x6
+// 0x1C00 0x7
+// 0x2000 0x8 RGBS,Pocket OFF
+// 0x2400 0x9 RGsB,Pocket OFF **
+// 0x2800 0xA YPbPr,Pocket OFF **
+// 0x2C00 0xB Scandoubler,Pocket OFF *
+// 0x3000 0xC
+// 0x3400 0xD
+// 0x3800 0xE
+// 0x3C00 0xF
+
+// * NOT IMPLEMENTED YET
+// ** OPTIONS AVALAIBLE ONLY FOR R2 ANALOGIZER
+// X BITS RESERVED FOR FUTURE USE
+// D BITS RESERVED FOR DEBUGGING USE
 `default_nettype none
 `timescale 1ns / 1ps
 
@@ -78,31 +154,19 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 	input wire [7:0] R,
 	input wire [7:0] G,
 	input wire [7:0] B,
-	input wire Hblank,
-	input wire Vblank,
 	input wire BLANKn,
 	input wire Hsync,
 	input wire Vsync,
-	input wire Csync,
 	input wire video_clk,
-	//Video Y/C Encoder interface
-	input wire PALFLAG,
-	//input wire CVBS,
-	input wire MULFLAG,
-	input wire [4:0] CHROMA_ADD,
-	input wire [4:0] CHROMA_MULT,
-	input wire [39:0] CHROMA_PHASE_INC,
-	input wire [26:0] COLORBURST_RANGE,
-	//Video SVGA Scandoubler interface
-	input wire [2:0] ce_divider,
 	//SNAC interface
     input wire conf_AB,              //0 conf. A(default), 1 conf. B (see graph above)
     input wire [4:0] game_cont_type, //0-15 Conf. A, 16-31 Conf. B
+    //input wire [2:0] game_cont_sample_rate, //0 compatibility mode (slowest), 1 normal mode, 2 fast mode, 3 superfast mode
     output wire [15:0] p1_btn_state,
     output wire [15:0] p2_btn_state,
     output wire [15:0] p3_btn_state,
     output wire [15:0] p4_btn_state,
-	output wire busy, 
+    output wire busy,   
 	//Pocket Analogizer IO interface to the cartridge port
 	inout   wire    [7:0]   cart_tran_bank2,
 	output  wire            cart_tran_bank2_dir,
@@ -120,16 +184,16 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
     //debug
     output wire o_stb
 );
-	wire [7:4] CART_BK0_OUT ;
-    wire [7:4] CART_BK0_IN ;
-    wire CART_BK0_DIR ; 
-    wire [7:6] CART_BK1_OUT_P76 ;
-    wire CART_PIN30_OUT ;
-    wire CART_PIN30_IN ;
-    wire CART_PIN30_DIR ; 
-    wire CART_PIN31_OUT ;
-    wire CART_PIN31_IN ;
-    wire CART_PIN31_DIR ;
+	wire [7:4] CART_BK0_OUT /* synthesis keep */;
+    wire [7:4] CART_BK0_IN /* synthesis keep */;
+    wire CART_BK0_DIR /* synthesis keep */; 
+    wire [7:6] CART_BK1_OUT_P76 /* synthesis keep */;
+    wire CART_PIN30_OUT /* synthesis keep */;
+    wire CART_PIN30_IN /* synthesis keep */;
+    wire CART_PIN30_DIR /* synthesis keep */; 
+    wire CART_PIN31_OUT /* synthesis keep */;
+    wire CART_PIN31_IN /* synthesis keep */;
+    wire CART_PIN31_DIR /* synthesis keep */;
 
 	openFPGA_Pocket_Analogizer_SNAC #(.MASTER_CLK_FREQ(MASTER_CLK_FREQ)) snac
 	(
@@ -157,40 +221,33 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 		//debug
     	.o_stb(o_stb)
 	); 
-
 	//Choose type of analog video type of signal
 	reg [5:0] Rout, Gout, Bout;
 	reg HsyncOut, VsyncOut, BLANKnOut;
 	wire [7:0] Yout, PrOut, PbOut;
-	wire [5:0] R_Sd, G_Sd, B_Sd;
-	wire Hsync_Sd, Vsync_Sd;
-	wire Hblank_Sd, Vblank_Sd;
-	wire BLANKn_SD = ~(Hblank_Sd || Vblank_Sd);
-
 	always @(*) begin
 		case(analog_video_type)
-			4'h0, 4'h8: begin //RGBS
-				Rout = R[7:2]&{6{BLANKn}};
-				Gout = G[7:2]&{6{BLANKn}};
-				Bout = B[7:2]&{6{BLANKn}};
-				HsyncOut = Csync;
+			4'h3, 4'h4, 4'hB, 4'hC: Y/C modes 
+				Rout = R[7:2];
+				Gout = G[7:2];
+				Bout = B[7:2];
+				HsyncOut = Hsync;
+				VsyncOut = 1'b1;
+				BLANKnOut = 1'b1;
+			4'h0, 4'h8: begin //RGBS 
+				Rout = R[7:2];
+				Gout = G[7:2];
+				Bout = B[7:2];
+				HsyncOut = Hsync;
 				VsyncOut = 1'b1;
 				BLANKnOut = BLANKn;
 			end
-			4'h3, 4'h4, 4'hB, 4'hC: begin// Y/C Modes works for Analogizer R1, R2 Adapters
-				Rout = yc_o[23:18];
-				Gout = yc_o[15:10];
-				Bout = yc_o[7:2];
-				HsyncOut = yc_cs;
-				VsyncOut = 1'b1;
-				BLANKnOut = 1'b1;
-			end
 			4'h1, 4'h9: begin //RGsB
-				Rout = R[7:2]&{6{BLANKn}};
-				Gout = G[7:2]&{6{BLANKn}};
-				Bout = B[7:2]&{6{BLANKn}};
+				Rout = R[7:2];
+				Gout = G[7:2];
+				Bout = B[7:2];
 				HsyncOut = 1'b1;
-				VsyncOut = Csync; //to DAC SYNC pin, SWITCH SOG ON
+				VsyncOut = Hsync; //to DAC SYNC pin, SWITCH SOG ON
 				BLANKnOut = BLANKn;
 			end
 			4'h2, 4'hA: begin //YPbPr
@@ -199,20 +256,12 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 				Bout = PbOut[7:2];
 				HsyncOut = 1'b1;
 				VsyncOut = YPbPr_sync; //to DAC SYNC pin, SWITCH SOG ON
-				BLANKnOut = 1'b1; //ADV7123 needs this
-			end
-			4'h5, 4'hD: begin //Scandoubler modes
-				Rout = R_Sd;
-				Gout = G_Sd;
-				Bout = B_Sd;
-				HsyncOut = Hsync_Sd;
-				VsyncOut = Vsync_Sd;
-				BLANKnOut = 1'b1;
+				BLANKnOut = 1'b1; // YPbPr_blank; //FIX with 1'b0 ???
 			end
 			default: begin
-				Rout = 6'h0;
-				Gout = 6'h0;
-				Bout = 6'h3F;
+				Rout = R[7:2];
+				Gout = G[7:2];
+				Bout = B[7:2];
 				HsyncOut = Hsync;
 				VsyncOut = 1'b1;
 				BLANKnOut = BLANKn;
@@ -224,80 +273,20 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 	vga_out ybpr_video
 	(
 		.clk(video_clk),
-		.ypbpr_en(1'b1),
-		.csync(Csync),
-		.de(BLANKn),
-		.din({R&{8{BLANKn}},G&{8{BLANKn}},B&{8{BLANKn}}}), //NES specific override, because not zero color data while blanking period.
-		.dout({PrOut,Yout,PbOut}),
-		.csync_o(YPbPr_sync),
-		.de_o(YPbPr_blank)
-	);
+		.ypbpr_en((analog_video_type == 4'h2) || (analog_video_type == 4'hA)),
 
-	wire [23:0] yc_o;
-	//wire yc_hs, yc_vs, 
-	wire yc_cs;
-	yc_out yc_out
-	(
-		.clk(i_clk),
-		.PAL_EN(PALFLAG),
-		.CVBS(1'b0),
-		.PHASE_INC(CHROMA_PHASE_INC),
-		.COLORBURST_RANGE(COLORBURST_RANGE),
-		.MULFLAG(MULFLAG),
-		.CHRADD(CHROMA_ADD), //fine tune 0-31
-		.CHRMUL(CHROMA_MULT), //fine tune 0-31
-		.hsync(Hsync),
-		.vsync(Vsync),
-		.csync(Csync),
-		.dout(yc_o),
-		//.din(rgb_color_r),
-    	.din({R&{8{BLANKn}},G&{8{BLANKn}},B&{8{BLANKn}}}),
+		.hsync(1'b0),
+		.vsync(1'b0),
+		.csync(Hsync),
+		.de(BLANKn),
+
+		.din({R,G,B}),
+		.dout({PrOut,Yout,PbOut}),
+
 		.hsync_o(),
 		.vsync_o(),
-		.csync_o(yc_cs)
-	);
-
-
-	//delay hsync one pixel clock period
-	// reg [1:0] delayed_hsync = 0;
-	// reg pclk_r = 0;
-	// always @(posedge i_clk) begin
-	// 	pclk_r <= video_clk;
-	// 	if(!pclk_r && video_clk) begin
-	// 		delayed_hsync[0] <= Hsync;
-	// 		delayed_hsync[1] <= delayed_hsync[0];
-	// 	end
-	// end
-	scandoubler sc_video
-	(
-		// system interface
-		.clk_sys(i_clk),
-		.bypass(1'b0),
-
-		// Pixelclock
-		.ce_divider(ce_divider), // 0 - clk_sys/4, 1 - clk_sys/2, 2 - clk_sys/3, 3 - clk_sys/4, etc.
-		//.ce_divider(3'd0), // 0 - clk_sys/4, 1 - clk_sys/2, 2 - clk_sys/3, 3 - clk_sys/4, etc.
-		.pixel_ena(), //output
-		.scanlines(2'd2), // scanlines (00-none 01-25% 10-50% 11-75%)
-
-		// shifter video interface
-		.hb_in(Hblank),
-		.vb_in(Vblank),
-		.hs_in(Hsync),
-		//.hs_in(delayed_hsync[1]),
-		.vs_in(Vsync),
-		.r_in({R[7:2]&{6{BLANKn}}}),
-		.g_in({G[7:2]&{6{BLANKn}}}),
-		.b_in({B[7:2]&{6{BLANKn}}}),
-
-		// output interface
-		.hb_out(Hblank_Sd),
-		.vb_out(Vblank_Sd),
-		.hs_out(Hsync_Sd),
-		.vs_out(Vsync_Sd),
-		.r_out(R_Sd),
-		.g_out(G_Sd),
-		.b_out(B_Sd)
+		.csync_o(YPbPr_sync),
+		.de_o(YPbPr_blank)
 	);
 
 	//infer tri-state buffers for cartridge data signals
