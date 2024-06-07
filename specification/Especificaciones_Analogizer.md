@@ -30,6 +30,7 @@
  * Y/C SVideo
  * Y/C video compuesto
  * SVGA
+ * 
 ## Adaptores SNAC para mandos
  La segunda funcionalidad en importancia que ofrece Analogizer es que permite usar adaptadores SNAC7 con conector USB 3 (tipo A) ya existentes en Analogizer con ciertas limitaciones.
  Este se traduce en que en la actualidad puedes utilizar mandos nativos que usen conectores Neogeo DB15, NES, SNES y PCEngine de 2 y 6 botones y el adaptador MultiTap NEC de 5 jugadores (actualmen
@@ -118,21 +119,21 @@ Analogizer:
 | ce_divider             | ENTRADA  | 3     | señal especifica Scandoubler RGBHV. Divisor del reloj de pixel. Usar valor que mejor ajuste la imagen        |
 | conf_AB                | ENTRADA  | 3     | señal SNAC. Configuración A ó B para mandos de juegos SNAC. Debe coincidir con posicion del interruptor A/B  |
 | game_cont_type         | ENTRADA  | 5     | señal SNAC. Especifica si no se usan mandos SNAC y si se usan de que tipo (Ver archivo interact.json)        |
-| p1_btn_state           | ENTRADA  | 16    | señal SNAC. Estado de los botones de mando SNAC para el player1 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)   |
-| p2_btn_state           | ENTRADA  | 16    | señal SNAC. Estado de los botones de mando SNAC para el player2 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)   |
-| p3_btn_state           | ENTRADA  | 16    | señal SNAC. Estado de los botones de mando SNAC para el player3 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)   |
-| p4_btn_state           | ENTRADA  | 16    | señal SNAC. Estado de los botones de mando SNAC para el player4 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)   |
-| cart_tran_bank2        | E/S      | 8     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_bank2_dir    | SALIDA   | 1     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_bank3        | E/S      | 8     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_bank3_dir    | SALIDA   | 1     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_bank1        | E/S      | 8     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_bank1_dir    | SALIDA   | 1     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_bank0        | E/S      | 4     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_bank0_dir    | SALIDA   | 1     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_pin30        | E/S      | 1     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_pin30_dir    | SALIDA   | 1     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_pin30_pwroff_reset| SALIDA   | 1     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_pin31        | E/S      | 1     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| cart_tran_pin31_dir    | SALIDA   | 1     | Interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
-| o_stb                  | SALIDA   | 1     | señal utiliza para depuración del módulo SNAC en la fase de desarrollo. No es necesaria para uso normal      |
+| p1_btn_state           | SALIDA   | 16    | señal SNAC. Estado de los botones de mando SNAC para el player1 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)   |
+| p2_btn_state           | SALIDA   | 16    | señal SNAC. Estado de los botones de mando SNAC para el player2 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)   |
+| p3_btn_state           | SALIDA   | 16    | señal SNAC. Estado de los botones de mando SNAC para el player3 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)   |
+| p4_btn_state           | SALIDA   | 16    | señal SNAC. Estado de los botones de mando SNAC para el player4 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)   |
+| cart_tran_bank2        | E/S      | 8     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_bank2_dir    | SALIDA   | 1     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_bank3        | E/S      | 8     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_bank3_dir    | SALIDA   | 1     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_bank1        | E/S      | 8     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_bank1_dir    | SALIDA   | 1     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_bank0        | E/S      | 4     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_bank0_dir    | SALIDA   | 1     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_pin30        | E/S      | 1     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_pin30_dir    | SALIDA   | 1     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_pin30_pwroff_reset| SALIDA   | 1     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_pin31        | E/S      | 1     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| cart_tran_pin31_dir    | SALIDA   | 1     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
+| o_stb                  | SALIDA   | 1     | signal used for debugging of the SNAC module in the development phase. Not necessary for normal use          |
