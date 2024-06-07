@@ -112,7 +112,6 @@ module apf_top (
 | MUFLAG                 | INPUT    | 1     | specific Y/C signal (DEBUG). Modifies the way the phase accumulator is calculated (default =0)                 |
 | CHROMA_ADD             | INPUT    | 5     | specific Y/C signal (DEBUG). Allows you to adjust the value of the phase accumulator in the development phase  |
 | CHROMA_MULT            | INPUT    | 5     | specific Y/C signal (DEBUG). Allows you to adjust the value of the phase accumulator in the development phase  |
-| CHROMA_MULT            | INPUT    | 5     | specific Y/C signal (DEBUG). Allows you to adjust the value of the phase accumulator in the development phase  |
 | CHROMA_PHASE_INC       | INPUT    | 40    | Y/C specific signal. Tuned phase accumulator step value for core frequency                                     |
 | COLORBURST_RANGE       | INPUT    | 27    | Y/C specific signal. Tuned color burst value for core video frequency                                          |
 | ce_divider             | INPUT    | 3     | Scandoubler RGBHV specifies signal. Pixel clock divider. Use value that best fits the image                    |
