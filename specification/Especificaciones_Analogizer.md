@@ -89,7 +89,7 @@ module apf_top (
 		...
 )
 ``` 
-=============================================================================================================================================================
+
 
 Normalmente el módulo `openFPGA_Pocket_Analogizer`se instancia a un nivel mas bajo, donde se crea la instancia del módulo del core.
 Lo único que se precisa es conectar las señales requiridas entre el core de la maquina que se va a ejecutar y la instancia del módulo de
@@ -141,11 +141,11 @@ Analogizer:
 | cart_tran_pin31_dir    | SALIDA   | 1     | interfaz con el puerto de cartuchos. Se conecta directamente a la señales del módulo de nivel superior       |
 | o_stb                  | SALIDA   | 1     | signal used for debugging of the SNAC module in the development phase. Not necessary for normal use          |
 
-=============================================================================================================================================================
 
 Para que el usuario pueda modificar las opciones de Analogizer se establecen tres grupos de opciones:
 
-```SNAC Adapter
+```
+  SNAC Adapter
     |                            FUNCTION                    VALUE (hex) WIDTH ADDRESS    MASK       MASKED VALUE
     +----------- None            disables SNAC interface     0x0         5     0xA0000000 0xFFFFFFE0 0x00        
     +----------- DB15 Normal     1/2 players                 0x1         5     0xA0000000 0xFFFFFFE0 0x01        
@@ -158,7 +158,8 @@ Para que el usuario pueda modificar las opciones de Analogizer se establecen tre
     +----------- SNES A,B<->X,Y  swap A,B X,Y buttons        0xB         5     0xA0000000 0xFFFFFFE0 0x0B         
 ``` 
 
-```SNAC Controller Assignment 
+```
+  SNAC Controller Assignment 
     |                              FUNCTION                                       VALUE (hex) WIDTH ADDRESS    MASK       MASKED VALUE
     +----------- SNAC -> P1        SNAC controller to P1                          0x0         4     0xA0000000 0xFFFFFC3F 0x000                 
     +----------- SNAC -> P2        SNAC controller to P2                          0x1         4     0xA0000000 0xFFFFFC3F 0x040           
@@ -170,7 +171,8 @@ Para que el usuario pueda modificar las opciones de Analogizer se establecen tre
     +----------- SNAC P1-P2->P3-P4 SNAC cont1-cont2 to P3-P4 (only for 4P cores)  0xB         4     0xA0000000 0xFFFFFC3F 0x180                     
 ```
 
-```Analogizer Video Out
+```
+  Analogizer Video Out
     |                                   FUNCTION                    VALUE (hex) WIDTH ADDRESS    MASK       MASKED VALUE 
     +----------- RGBS                   idem                        0x0         4     0xA0000000 0xFFFFC3FF 0x0000       
     +----------- RGsB                   idem                        0x1         4     0xA0000000 0xFFFFC3FF 0x0400       
@@ -185,7 +187,7 @@ Para que el usuario pueda modificar las opciones de Analogizer se establecen tre
     +----------- Y/C PAL,Pocket OFF     idem, blanks Pocket screen  0xC         4     0xA0000000 0xFFFFC3FF 0x3000       
     +----------- Scandoubler,Pocket OFF idem, blanks Pocket screen  0xD         4     0xA0000000 0xFFFFC3FF 0x3400         
 ```
-=============================================================================================================================================================
+
 
 Hay que seleccionar un rango de direcciones del bridge en el framework de la Pocket, en el ejemplo se ha reservado la dirección 0xA0000000 para Analogizer.
 La interacción en el código queda a elección del desarrollador, en este ejemplo quedaría así:
@@ -236,7 +238,7 @@ La interacción en el código queda a elección del desarrollador, en este ejemp
   end
 ```
 
-=============================================================================================================================================================
+
 Puede ser necesario sincronizar la lectura de las opciones, al utilizar dominios de reloj diferentes:
 
 ```
