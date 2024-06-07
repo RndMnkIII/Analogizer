@@ -170,7 +170,7 @@ Para que el usuario pueda modificar las opciones de Analogizer se establecen tre
         "type": "list",
         "enabled": true,
         "persist": true,
-        "address": "0xF7000000",
+        "address": "0xA0000000",
         "defaultval": "0x00",
         "mask": "0xFFFFFFE0",
         "options": [
@@ -218,7 +218,7 @@ Para que el usuario pueda modificar las opciones de Analogizer se establecen tre
         "type": "list",
         "enabled": true,
         "persist": true,
-        "address": "0xF7000000",
+        "address": "0xA0000000",
         "defaultval": "0x00",
         "mask": "0xFFFFFC3F",
         "options": [
@@ -262,7 +262,7 @@ Para que el usuario pueda modificar las opciones de Analogizer se establecen tre
         "type": "list",
         "enabled": true,
         "persist": true,
-        "address": "0xF7000000",
+        "address": "0xA0000000",
         "defaultval": "0x0",
         "mask": "0xFFFFC3FF",
         "options": [

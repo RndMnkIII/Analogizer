@@ -173,7 +173,7 @@ So that the user can modify the Analogizer options, three groups of options are 
         "type": "list",
         "enabled": true,
         "persist": true,
-        "address": "0xF7000000",
+        "address": "0xA0000000",
         "defaultval": "0x00",
         "mask": "0xFFFFFFE0",
         "options": [
@@ -221,7 +221,7 @@ So that the user can modify the Analogizer options, three groups of options are 
         "type": "list",
         "enabled": true,
         "persist": true,
-        "address": "0xF7000000",
+        "address": "0xA0000000",
         "defaultval": "0x00",
         "mask": "0xFFFFFC3F",
         "options": [
@@ -265,7 +265,7 @@ So that the user can modify the Analogizer options, three groups of options are 
         "type": "list",
         "enabled": true,
         "persist": true,
-        "address": "0xF7000000",
+        "address": "0xA0000000",
         "defaultval": "0x0",
         "mask": "0xFFFFC3FF",
         "options": [
