@@ -5,7 +5,7 @@
 * Conector USB 3 para adaptores SNAC7 que permite conectar mandos de juegos nativos.
 * Se conecta a la Analogue Pocket Utilizando el puerto de cartuchos.
 * Alimentación externa de 5V utilizando puerto USB3 C. Necesaria para alimentacion de adaptador activo Y/C, activación de modo RGB en TV con SCART y alimentación de mandos de juegos nativos.
-* Interruptor A/B para alternar disposicion alternativa de señales para dispositivos SNAC.
+* Interruptor A/B para alternar disposicion de señales para dispositivos SNAC.
 * Interruptor SOG (Analogizer R2) para activar funcionalidad Sunc On Green.
 
 ## Fundamentos
