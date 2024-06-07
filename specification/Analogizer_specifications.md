@@ -49,7 +49,7 @@ This module communicates with the adapter directly through the Pocket's cartridg
 of Analogue openFPGA for the developer, using the following signals instantiated in the highest level module as follows:
 
 ```
-module apf_top (
+module apf_top \(
 ...
         ///////////////////////////////////////////////////
         // cartridge interface
@@ -89,6 +89,7 @@ module apf_top (
         inout   wire            cart_tran_pin31,
         output  wire            cart_tran_pin31_dir,
 		...
+  \)
 ``` 
 
 =============================================================================================================================================================
@@ -109,24 +110,24 @@ Analogizer:
 | B                      | INPUT    | 8     | color channel B. Internally it is reduced to the 6 bits with the highest weight                                |
 | HBlank                 | INPUT    | 1     | horizontal blanking signal                                                                                     |
 | VBlank                 | INPUT    | 1     | vertical blanking signal                                                                                       |
-| BLANKn                 | INPUT    | 1     | active low composite blanking signal (ADV7123 requires it for RGBS, RGsB video output)                         |
+| BLANKn                 | INPUT    | 1     | active low composite blanking signal \(ADV7123 requires it for RGBS, RGsB video output\)                         |
 | Hsync                  | INPUT    | 1     | horizontal synchronization signal                                                                              |
 | Vsync                  | INPUT    | 1     | vertical synchronization signal                                                                                |
 | Csync                  | INPUT    | 1     | composite synchronization signal. The generation of this signal is specific to each core                       |
 | video_clk              | INPUT    | 1     | video clock for the ADV7123. Depending on the core, this signal may be the same as i_clk or another specific   |
-| PALFLAG                | INPUT    | 1     | Y/C specific signal. Allows you to adapt SVideo and composite video to PAL(=1) or NTSC(=0)                     |
-| MUFLAG                 | INPUT    | 1     | specific Y/C signal (DEBUG). Modifies the way the phase accumulator is calculated (default =0)                 |
-| CHROMA_ADD             | INPUT    | 5     | specific Y/C signal (DEBUG). Allows you to adjust the value of the phase accumulator in the development phase  |
-| CHROMA_MULT            | INPUT    | 5     | specific Y/C signal (DEBUG). Allows you to adjust the value of the phase accumulator in the development phase  |
+| PALFLAG                | INPUT    | 1     | Y/C specific signal. Allows you to adapt SVideo and composite video to PAL\(=1\) or NTSC\(=0\)                     |
+| MUFLAG                 | INPUT    | 1     | specific Y/C signal \(DEBUG\). Modifies the way the phase accumulator is calculated (default =0)                 |
+| CHROMA_ADD             | INPUT    | 5     | specific Y/C signal \(DEBUG\). Allows you to adjust the value of the phase accumulator in the development phase  |
+| CHROMA_MULT            | INPUT    | 5     | specific Y/C signal \(DEBUG\). Allows you to adjust the value of the phase accumulator in the development phase  |
 | CHROMA_PHASE_INC       | INPUT    | 40    | Y/C specific signal. Tuned phase accumulator step value for core frequency                                     |
 | COLORBURST_RANGE       | INPUT    | 27    | Y/C specific signal. Tuned color burst value for core video frequency                                          |
 | ce_divider             | INPUT    | 3     | Scandoubler RGBHV specifies signal. Pixel clock divider. Use value that best fits the image                    |
-| conf_AB                | INPUT    | 1     | SNAC signal. Configuration A(=0) or B(=1) for SNAC. It must match the position of the A/B switch               |
+| conf_AB                | INPUT    | 1     | SNAC signal. Configuration A\(=0\) or B\(=1\) for SNAC. It must match the position of the A/B switch               |
 | game_cont_type         | INPUT    | 5     | SNAC signal. Specifies if SNAC commands are not used and if what type are used (See interact.json file)        |
-| p1_btn_state           | OUTPUT   | 16    | SNAC signal. Status of SNAC control buttons for player1 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)             |
-| p2_btn_state           | OUTPUT   | 16    | SNAC signal. Status of SNAC control buttons for player2 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)             |
-| p3_btn_state           | OUTPUT   | 16    | SNAC signal. Status of SNAC control buttons for player3 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)             |
-| p4_btn_state           | OUTPUT   | 16    | SNAC signal. Status of SNAC control buttons for player4 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)             |
+| p1_btn_state           | OUTPUT   | 16    | SNAC signal. Status of SNAC control buttons for player1 \(ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U\)             |
+| p2_btn_state           | OUTPUT   | 16    | SNAC signal. Status of SNAC control buttons for player2 \(ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U\)             |
+| p3_btn_state           | OUTPUT   | 16    | SNAC signal. Status of SNAC control buttons for player3 \(ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U\)             |
+| p4_btn_state           | OUTPUT   | 16    | SNAC signal. Status of SNAC control buttons for player4 \(ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U\)             |
 | cart_tran_bank2        | I/O      | 8     | Interface with the cartridge port. Connects directly to the signals of the higher level module                 |
 | cart_tran_bank2_dir    | OUTPUT   | 1     | Interface with the cartridge port. Connects directly to the signals of the higher level module                 |
 | cart_tran_bank3        | I/O      | 8     | Interface with the cartridge port. Connects directly to the signals of the higher level module                 |
@@ -142,7 +143,7 @@ Analogizer:
 | cart_tran_pin31_dir    | OUTPUT   | 1     | Interface with the cartridge port. Connects directly to the signals of the higher level module                 |
 | o_stb                  | OUTPUT   | 1     | Interface with the cartridge port. Connects directly to the signals of the higher level module                 |
 
-=============================================================================================================================================================
+===
 
 So that the user can modify the Analogizer options, three groups of options are established:
 
@@ -186,7 +187,8 @@ So that the user can modify the Analogizer options, three groups of options are 
     +----------- Y/C PAL,Pocket OFF     idem, blanks Pocket screen  0xC         4     0xA0000000 0xFFFFC3FF 0x3000       
     +----------- Scandoubler,Pocket OFF idem, blanks Pocket screen  0xD         4     0xA0000000 0xFFFFC3FF 0x3400         
 ```
-=============================================================================================================================================================
+
+===
 
 A range of bridge addresses must be selected in the Pocket framework. In the example, address 0xA0000000 has been reserved for Analogizer.
 The interaction in the code is up to the developer, in this example it would look like this:
@@ -237,7 +239,8 @@ The interaction in the code is up to the developer, in this example it would loo
   end
 ```
 
-=============================================================================================================================================================
+===
+
 It may be necessary to synchronize the reading of the options, when using different clock domains:
 
 ```
