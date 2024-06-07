@@ -1,4 +1,4 @@
-#Analogizer Specifications
+# Analogizer Specifications
 
 ## Basics
  The basis of the Analogizer adapter is to expand the possibilities of the Analogue Pocket portable console in two fundamental aspects. On the one hand
