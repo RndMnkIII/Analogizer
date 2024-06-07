@@ -42,7 +42,7 @@
  y Analogizer. 
 
 ## Interfaz Analogizer (desarrollo)
-La primera modificación que hay que añadir al código del core original es habilitar el puerto de cartuchos de la Pocket. Para ello debemos editar el archivo `core.json` que se encuentra en la misma ubicación que el bitstream del core:
+La primera modificación que hay que añadir al código del core original es habilitar el puerto de cartuchos de la Pocket. Para ello debemos editar el archivo `core.json` que se encuentra en la misma ubicación que el bitstream del core y establecer `"cartridge_adapter"` al valor `0`:
 
 ```
 {

@@ -43,7 +43,7 @@
  and Analogizer.
 
 ## Analogizer interface (development)
-The first modification that must be added to the original core code is to enable the Pocket's cartridge port. To do this we must edit the `core.json` file located in the same location as the core bitstream:
+The first modification that must be added to the original core code is to enable the Pocket's cartridge port. To do this we must edit the `core.json` file located in the same location as the core bitstream and set `"cartridge_adapter"` to the value`0`:
 
 ```
 {
