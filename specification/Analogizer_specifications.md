@@ -115,7 +115,7 @@ module apf_top (
 | CHROMA_PHASE_INC       | INPUT    | 40    | Y/C specific signal. Tuned phase accumulator step value for core frequency                                     |
 | COLORBURST_RANGE       | INPUT    | 27    | Y/C specific signal. Tuned color burst value for core video frequency                                          |
 | ce_divider             | INPUT    | 3     | Scandoubler RGBHV specifies signal. Pixel clock divider. Use value that best fits the image                    |
-| conf_AB                | INPUT    | 3     | SNAC signal. Configuration A or B for SNAC game controllers. It must match the position of the A/B switch      |
+| conf_AB                | INPUT    | 1     | SNAC signal. Configuration A(=0) or B(=1) for SNAC. It must match the position of the A/B switch               |
 | game_cont_type         | INPUT    | 5     | SNAC signal. Specifies if SNAC commands are not used and if what type are used (See interact.json file)        |
 | p1_btn_state           | OUTPUT   | 16    | SNAC signal. Status of SNAC control buttons for player1 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)             |
 | p2_btn_state           | OUTPUT   | 16    | SNAC signal. Status of SNAC control buttons for player2 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)             |

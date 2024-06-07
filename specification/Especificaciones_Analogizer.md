@@ -117,7 +117,7 @@ Analogizer:
 | CHROMA_PHASE_INC       | ENTRADA  | 40    | señal especifica Y/C. Valor de incremento del acumulador de fase sintonizado para la frecuencia del core     |
 | COLORBURST_RANGE       | ENTRADA  | 27    | señal especifica Y/C. Valor de color burst sintonizado para la frecuencia de video del core                  |
 | ce_divider             | ENTRADA  | 3     | señal especifica Scandoubler RGBHV. Divisor del reloj de pixel. Usar valor que mejor ajuste la imagen        |
-| conf_AB                | ENTRADA  | 3     | señal SNAC. Configuración A ó B para mandos de juegos SNAC. Debe coincidir con posicion del interruptor A/B  |
+| conf_AB                | ENTRADA  | 1     | señal SNAC. Configuración A (=0) ó B (=1) para SNAC. Debe coincidir con posicion del interruptor A/B         |
 | game_cont_type         | ENTRADA  | 5     | señal SNAC. Especifica si no se usan mandos SNAC y si se usan de que tipo (Ver archivo interact.json)        |
 | p1_btn_state           | SALIDA   | 16    | señal SNAC. Estado de los botones de mando SNAC para el player1 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)   |
 | p2_btn_state           | SALIDA   | 16    | señal SNAC. Estado de los botones de mando SNAC para el player2 (ST,SEL,R3,L3,R2,L2,R1,L1,Y,X,B,A,R,L,D,U)   |
