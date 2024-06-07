@@ -1,7 +1,7 @@
 # Analogizer Specifications
 
 ## Hardware 
-* Based on the ADV7123 RGB DAC. It uses 6 bits per color component. It can output with SOG. Supports video frequencies up to 140MHz. 
+* Based on the ADV7123 RGB DAC. It uses 6 bits per color component. It can output video signal with SOG. Supports video frequencies up to 140MHz. 
 * RGBS, RGsB, YPbPr, Y/C, RGBHV video output via VGA connector.
 * USB 3 connector for SNAC7 adapters that allows you to connect native game controllers. * Connects to the Analogue Pocket using the cartridge port. 
 * External 5V power using USB3 C port. Necessary for powering the active Y/C adapter, activating RGB mode on TV with SCART and powering native game controllers.
