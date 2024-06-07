@@ -380,7 +380,7 @@ The interaction in the code is up to the developer, in this example it would loo
       32'h2xxxxxxx: begin
         bridge_rd_data <= sd_read_data;
       end
-      32'hFA000000: begin //Analogizer settings
+      32'hA0000000: begin //Analogizer settings
         bridge_rd_data <= {18'h0,analogizer_settings};
       end
       32'hF8xxxxxx: begin
@@ -406,7 +406,7 @@ The interaction in the code is up to the developer, in this example it would loo
         end
         ...
         /*[ANALOGIZER_HOOK_BEGIN]*/
-		32'hFA000000: analogizer_settings  <=  bridge_wr_data[13:0];
+		32'hA0000000: analogizer_settings  <=  bridge_wr_data[13:0];
 	    /*[ANALOGIZER_HOOK_END]*/
         ...
       endcase
