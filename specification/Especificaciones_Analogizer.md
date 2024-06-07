@@ -1,6 +1,6 @@
 # Especificaciones de Analogizer
 ## Hardware
-* Basado en el DAC RGB ADV7123. Utiliza 6 bits por componente. Puede generar salida con SOG.Admite frecuencias de video de hasta 140MHz.
+* Basado en el DAC RGB ADV7123. Utiliza 6 bits por componente de color. Puede generar salida con SOG.Admite frecuencias de video de hasta 140MHz.
 * Salida de video RGBS,RGsB,YPbPr,Y/C,RGBHV a través de conector VGA.
 * Conector USB 3 para adaptores SNAC7 que permite conectar mandos de juegos nativos.
 * Se conrcta a la Analogue Pocket Utilizando el puerto de cartuchos.
