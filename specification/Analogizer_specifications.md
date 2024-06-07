@@ -1,4 +1,12 @@
 # Analogizer Specifications
+## Hardware
+* Basado en el DAC RGB ADV7123. Utiliza 6 bits por componente de color. Puede generar salida con SOG.Admite frecuencias de video de hasta 140MHz.
+* Salida de video RGBS,RGsB,YPbPr,Y/C,RGBHV a través de conector VGA.
+* Conector USB 3 para adaptores SNAC7 que permite conectar mandos de juegos nativos.
+* Se conecta a la Analogue Pocket Utilizando el puerto de cartuchos.
+* Alimentación externa de 5V utilizando puerto USB3 C. Necesaria para alimentacion de adaptador activo Y/C, activación de modo RGB en TV con SCART y alimentación de mandos de juegos nativos.
+* Interruptor A/B para alternar disposicion de señales para dispositivos SNAC.
+* Interruptor SOG (Analogizer R2) para activar funcionalidad Sync On Green.
 
 ## Basics
  The basis of the Analogizer adapter is to expand the possibilities of the Analogue Pocket portable console in two fundamental aspects. On the one hand
