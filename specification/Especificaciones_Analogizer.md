@@ -30,7 +30,7 @@
  * Y/C SVideo
  * Y/C video compuesto
  * SVGA
- * 
+  
 ## Adaptores SNAC para mandos
  La segunda funcionalidad en importancia que ofrece Analogizer es que permite usar adaptadores SNAC7 con conector USB 3 (tipo A) ya existentes en Analogizer con ciertas limitaciones.
  Este se traduce en que en la actualidad puedes utilizar mandos nativos que usen conectores Neogeo DB15, NES, SNES y PCEngine de 2 y 6 botones y el adaptador MultiTap NEC de 5 jugadores (actualmen
