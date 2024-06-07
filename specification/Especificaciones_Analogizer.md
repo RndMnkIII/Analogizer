@@ -92,7 +92,7 @@ Normalmente el módulo `openFPGA_Pocket_Analogizer`se instancia a un nivel mas b
 Lo único que se precisa es conectar las señales requiridas entre el core de la maquina que se va a ejecutar y la instancia del módulo de
 Analogizer:
 
-| SEÑAL                  | TIPO     | LONG  | FUNCION                                                                                                      |
+| SEÑAL                  | TIPO     | ANCHO | FUNCION                                                                                                      |
 | :--------------------: | :------: | :---: | :----------------------------------------------------------------------------------------------------------: |
 | MASTER_CLK_FREQ        | PARAMETRO|       | Este parámetro se utiliza para calcular el delay en señales de temporización para los dispositivos SNAC      |
 | i_clk                  | ENTRADA  | 1     | reloj principal. Puede ser el reloj maestro del core o el reloj de video.                                    |

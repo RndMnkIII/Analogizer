@@ -91,7 +91,7 @@ module apf_top (
 		...
 ``` 
 
-| SIGNAL                 | TYPE     | LONG  | FUNCTION                                                                                                       |
+| SIGNAL                 | TYPE     | WIDTH | FUNCTION                                                                                                       |
 | :--------------------: | :------: | :---: | :------------------------------------------------------------------------------------------------------------: |
 | MASTER_CLK_FREQ        | PARAMETER|       | This parameter is used to calculate the delay in timing signals for SNAC                                       |
 | i_clk                  | INPUT    | 1     | main clock. It can be the core master clock or the video clock.                                                |
