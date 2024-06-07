@@ -91,6 +91,12 @@ module apf_top (
 		...
 ``` 
 
+=============================================================================================================================================================
+
+Normally the `openFPGA_Pocket_Analogizer` module is instantiated at a lower level, where the core module is instantiated.
+The only thing that is required is to connect the required signals between the core of the machine that is going to be executed and the instance of the module.
+Analogizer:
+
 | SIGNAL                 | TYPE     | WIDTH | FUNCTION                                                                                                       |
 | :--------------------: | :------: | :---: | :------------------------------------------------------------------------------------------------------------: |
 | MASTER_CLK_FREQ        | PARAMETER|       | This parameter is used to calculate the delay in timing signals for SNAC                                       |
@@ -136,6 +142,118 @@ module apf_top (
 | cart_tran_pin31_dir    | OUTPUT   | 1     | Interface with the cartridge port. Connects directly to the signals of the higher level module                 |
 | o_stb                  | OUTPUT   | 1     | Interface with the cartridge port. Connects directly to the signals of the higher level module                 |
 
-Normally the `openFPGA_Pocket_Analogizer` module is instantiated at a lower level, where the core module is instantiated.
-The only thing that is required is to connect the required signals between the core of the machine that is going to be executed and the instance of the module.
-Analogizer:
+=============================================================================================================================================================
+
+So that the user can modify the Analogizer options, three groups of options are established:
+
+```SNAC Adapter
+    |                            FUNCTION                    VALUE (hex) WIDTH ADDRESS    MASK       MASKED VALUE
+    +----------- None            disables SNAC interface     0x0         5     0xA0000000 0xFFFFFFE0 0x00        
+    +----------- DB15 Normal     1/2 players                 0x1         5     0xA0000000 0xFFFFFFE0 0x01        
+    +----------- NES             1/2 players                 0x2         5     0xA0000000 0xFFFFFFE0 0x02        
+    +----------- SNES            1/2 players                 0x3         5     0xA0000000 0xFFFFFFE0 0x03         
+    +----------- PCE 2BTN        1 player                    0x4         5     0xA0000000 0xFFFFFFE0 0x04         
+    +----------- PCE 6BTN        1 player                    0x5         5     0xA0000000 0xFFFFFFE0 0x05         
+    +----------- PCE Multitap    allows 4 players            0x6         5     0xA0000000 0xFFFFFFE0 0x06         
+    +----------- DB15 Fast       uses faster sampling        0x9         5     0xA0000000 0xFFFFFFE0 0x09         
+    +----------- SNES A,B<->X,Y  swap A,B X,Y buttons        0xB         5     0xA0000000 0xFFFFFFE0 0x0B         
+``` 
+
+```SNAC Controller Assignment 
+    |                              FUNCTION                                       VALUE (hex) WIDTH ADDRESS    MASK       MASKED VALUE
+    +----------- SNAC -> P1        SNAC controller to P1                          0x0         4     0xA0000000 0xFFFFFC3F 0x000                 
+    +----------- SNAC -> P2        SNAC controller to P2                          0x1         4     0xA0000000 0xFFFFFC3F 0x040           
+    +----------- SNAC P1,P2->P1,P2 SNAC cont1,cont2 to P1,P2                      0x2         4     0xA0000000 0xFFFFFC3F 0x080           
+    +----------- SNAC P1,P2->P2,P1 SNAC cont1,cont2 to P2,P1                      0x3         4     0xA0000000 0xFFFFFC3F 0x0C0           
+    +----------- SNAC P1,P2->P3,P4 SNAC cont1,cont2 to P3,P4 (only for 4P cores)  0x8         4     0xA0000000 0xFFFFFC3F 0x200           
+    +----------- SNAC P1-P4->P1-P4 SNAC cont1-cont4 to P1-P4 (only for 4P cores)  0x9         4     0xA0000000 0xFFFFFC3F 0x100           
+    +----------- SNAC P1-P2->P1-P2 SNAC cont1-cont2 to P1-P2 (only for 4P cores)  0xA         4     0xA0000000 0xFFFFFC3F 0x140           
+    +----------- SNAC P1-P2->P3-P4 SNAC cont1-cont2 to P3-P4 (only for 4P cores)  0xB         4     0xA0000000 0xFFFFFC3F 0x180                     
+```
+
+```Analogizer Video Out
+    |                                   FUNCTION                    VALUE (hex) WIDTH ADDRESS    MASK       MASKED VALUE 
+    +----------- RGBS                   idem                        0x0         4     0xA0000000 0xFFFFC3FF 0x0000       
+    +----------- RGsB                   idem                        0x1         4     0xA0000000 0xFFFFC3FF 0x0400       
+    +----------- YPbPr                  idem                        0x2         4     0xA0000000 0xFFFFC3FF 0x0800       
+    +----------- Y/C NTSC               idem                        0x3         4     0xA0000000 0xFFFFC3FF 0x0C00       
+    +----------- Y/C PAL                idem                        0x4         4     0xA0000000 0xFFFFC3FF 0x1000       
+    +----------- Scandoubler RGBHV      idem                        0x5         4     0xA0000000 0xFFFFC3FF 0x1400       
+    +----------- RGBS,Pocket OFF        idem, blanks Pocket screen  0x8         4     0xA0000000 0xFFFFC3FF 0x2000       
+    +----------- RGsB,Pocket OFF        idem, blanks Pocket screen  0x9         4     0xA0000000 0xFFFFC3FF 0x2400       
+    +----------- YPbPr,Pocket OFF       idem, blanks Pocket screen  0xA         4     0xA0000000 0xFFFFC3FF 0x2800       
+    +----------- Y/C NTSC,Pocket OFF    idem, blanks Pocket screen  0xB         4     0xA0000000 0xFFFFC3FF 0x2C00       
+    +----------- Y/C PAL,Pocket OFF     idem, blanks Pocket screen  0xC         4     0xA0000000 0xFFFFC3FF 0x3000       
+    +----------- Scandoubler,Pocket OFF idem, blanks Pocket screen  0xD         4     0xA0000000 0xFFFFC3FF 0x3400         
+```
+=============================================================================================================================================================
+
+A range of bridge addresses must be selected in the Pocket framework. In the example, address 0xA0000000 has been reserved for Analogizer.
+The interaction in the code is up to the developer, in this example it would look like this:
+
+```
+  // for bridge write data, we just broadcast it to all bus devices
+  // for bridge read data, we have to mux it
+  // add your own devices here
+  always @(*) begin
+    casex (bridge_addr)
+      default: begin
+        bridge_rd_data <= 0;
+      end
+      32'h2xxxxxxx: begin
+        bridge_rd_data <= sd_read_data;
+      end
+      32'hFA000000: begin //Analogizer settings
+        bridge_rd_data <= {18'h0,analogizer_settings};
+      end
+      32'hF8xxxxxx: begin
+        bridge_rd_data <= cmd_bridge_rd_data;
+      end
+    endcase
+  end
+```
+
+```
+ always @(posedge clk_74a) begin
+    if (reset_delay > 0) begin
+      reset_delay <= reset_delay - 1;
+    end
+
+    if (bridge_wr) begin
+      casex (bridge_addr)
+        32'h0: begin
+          ioctl_download <= bridge_wr_data[0];
+        end
+        32'h4: begin
+          save_download <= bridge_wr_data[0];
+        end
+        ...
+        /*[ANALOGIZER_HOOK_BEGIN]*/
+		32'hFA000000: analogizer_settings  <=  bridge_wr_data[13:0];
+	    /*[ANALOGIZER_HOOK_END]*/
+        ...
+      endcase
+    end
+  end
+```
+
+=============================================================================================================================================================
+It may be necessary to synchronize the reading of the options, when using different clock domains:
+
+```
+  /*[ANALOGIZER_HOOK_BEGIN]*/
+  //Pocket Menu settings
+  reg [13:0] analogizer_settings = 0;
+  wire [13:0] analogizer_settings_s;
+
+  synch_3 #(.WIDTH(14)) sync_analogizer(analogizer_settings, analogizer_settings_s, clk_sys_42_95);
+
+  always @(*) begin
+    snac_game_cont_type   = analogizer_settings_s[4:0];
+    snac_cont_assignment  = analogizer_settings_s[9:6];
+    analogizer_video_type = analogizer_settings_s[13:10];
+  end
+  /*[ANALOGIZER_HOOK_END]*/
+```
+
+
