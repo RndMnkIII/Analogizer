@@ -7,6 +7,10 @@ Tienda Online: https://www.analogizer-fpga.com
 Adaptador para el sistema FPGA portatil Analogue Pocket que utiliza el puerto de expansión de cartuchos para generar salida de vídeo analogico RGB (18bit) Sync a través de un puerto VGA y conectar mandos de juegos nativos de diferentes tipos (DB15, NES, SNES, PCEngine) utilizando
 la interfaz SNAC7 mediante un conector USB3.
 
+## Especificaciones:
+https://github.com/RndMnkIII/Analogizer/blob/main/specification/Especificaciones_Analogizer.md
+
+
 ## NUEVO: Analogizer R2 (Mejorado):
 ![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1711795943821.jpg)
 ![ANALOGIZER R2](https://github.com/RndMnkIII/Analogizer/blob/main/img/1712216898707.jpg)
