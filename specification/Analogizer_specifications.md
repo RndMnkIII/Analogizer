@@ -31,6 +31,17 @@
  * Y/C composite video
  * SVGA
 
+ This table establishes the type of cable and/or adapter necessary depending on the type of video output:
+ | VIDEO SIGNAL    | CABLE AND/OR ADAPTER               | COMMENTS                                                                                                                                |
+ | :-------------: | :--------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
+ | RGBS            | VGA TO SCART                       | There are specific models that also incorporate a jack-type audio connector. See main repository for more information.                  |
+ | RGBS            | VGA TO BNC                         | For CRT models with BNC type inputs. These are normally PVM type professional range screens.                                            |
+ | RGsB            | VGA TO SCART                       | Similar to YPbPr but uses RGB channels with sync on G channel. Requires Analogizer R2 with SOG switch (ON position)                     |
+ | RGsB            | VGA TO component                   | Similar to YPbPr but uses RGB channels with sync on G channel. Requires Analogizer R2 with SOG switch (ON position)                     |
+ | YPbPr           | VGA TO component                   | This cable has 3 RCA cables on the other end. Requires the use of Analogizer R2 with SOG switch (ON position)                           |
+ | Y/C             | Active Y/C adapter + cable         | SVideo cable with MiniDIN4 connector or composite video cable with RCA connector.                                                       |
+ | RGBHV           | VGA                                | VGA cable to connect directly to a monitor of this type.                                                                                |
+
 ## SNAC adapters for controllers
  The second most important functionality that Analogizer offers is that it allows you to use SNAC7 adapters with a USB 3 (type A) connector that already exist in Analogizer with certain limitations.
  This means that you can currently use native controllers for Neogeo DB15, NES, SNES and PCEngine 2btn and 6btn connectors and the NEC 5-player MultiTap adapter (currently 

@@ -40,6 +40,18 @@ You will need to connect an active VGA to Y/C adapter to the VGA port (the 5V po
 Using another type of Y/C adapter not tested to be used with Analogizer will not receive official support.
 
 ## What do you need to use it?
+ This table establishes the type of cable and/or adapter necessary depending on the type of video output:
+ 
+ | VIDEO SIGNAL    | CABLE AND/OR ADAPTER               | COMMENTS                                                                                                                                |
+ | :-------------: | :--------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
+ | RGBS            | VGA TO SCART                       | There are specific models that also incorporate a jack-type audio connector. See main repository for more information.                  |
+ | RGBS            | VGA TO BNC                         | For CRT models with BNC type inputs. These are normally PVM type professional range screens.                                            |
+ | RGsB            | VGA TO SCART                       | Similar to YPbPr but uses RGB channels with sync on G channel. Requires Analogizer R2 with SOG switch (ON position)                     |
+ | RGsB            | VGA TO component                   | Similar to YPbPr but uses RGB channels with sync on G channel. Requires Analogizer R2 with SOG switch (ON position)                     |
+ | YPbPr           | VGA TO component                   | This cable has 3 RCA cables on the other end. Requires the use of Analogizer R2 with SOG switch (ON position)                           |
+ | Y/C             | Active Y/C adapter + cable         | SVideo cable with MiniDIN4 connector or composite video cable with RCA connector.                                                       |
+ | RGBHV           | VGA                                | VGA cable to connect directly to a monitor of this type.                                                                                |
+
 If your intention is to use the analog video output, you must have a device that can display said video signal such as a CRT TV with SCART input, or convert it to another format using
 a converter like OSSC or Retrotink. A VGA to SCART converter cable.
 It is recommended to use this cable with the Analogizer because it is verified that it takes the +5V from pin 9 of the VGA connector and passes it to pin 16 of the SCART connector and includes a 470 Ohm resistor in the CSYNC signal (I recomend to read this article before you buy any cable https://www.retrorgb.com/beware-of-mister-scart-cables.html):

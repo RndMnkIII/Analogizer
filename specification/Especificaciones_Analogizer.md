@@ -25,11 +25,28 @@
  entradas de video, seguidos por los usuarios con TV con entrada de video por componentes y TV con entrada SCART. La salida SVGA se considera accesoria para usuarios
  que no disponen de pantallas de TV CRT pero si disponen de monitores de video SVGA.
  Por orden de calidad de salida de video en CRT se recomiendan: 
+
  * SCART RGB
  * Video por componentes YPbpr (requiere versión R2 de Analogizer con SOG)
  * Y/C SVideo
  * Y/C video compuesto
  * SVGA
+  
+ En esta tabla se establece el tipo de cable y/o adaptador necesario en función del tipo de salida de video:
+ 
+ | SEÑAL DE VIDEO  | CABLE Y/O ADAPTADOR                | COMENTARIOS                                                                                                                           |
+ | :-------------: | :--------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: |
+ | RGBS            | VGA TO SCART                       | Hay modelos especificos que incorporan tambien el conector de audio de tipo jack. Ver repositorio principal para mas información.     |
+ | RGBS            | VGA TO BNC                         | Para modelos de CRT con entradas de tipo BNC. Normalmente se trata de pantallas de gama profesional de tipo PVM.                      |
+ | RGsB            | VGA TO SCART                       | Parecido a YPbPr pero usa canales RGB con el sync en el canal G. Necesita Analogizer R2 con interruptor SOG (posicion ON)             | 
+ | RGsB            | VGA TO component                   | Parecido a YPbPr pero usa canales RGB con el sync en el canal G. Necesita Analogizer R2 con interruptor SOG (posicion ON)             | 
+ | YPbPr           | VGA TO component                   | esta cable tiene 3 cables RCA en el otro extremo. Requiere el uso de Analogizer R2 con interruptor SOG (posicion ON)                  |
+ | Y/C             | Active Y/C adapter + cable         | Cable SVideo con conector MiniDIN4 o cable de video compuesto con conector RCA.                                                       |
+ | RGBHV           | VGA                                | Cable VGA para conectar directamente a un monitor de este tipo.                                                                       |
+
+
+
+
   
 ## Adaptores SNAC para mandos
  La segunda funcionalidad en importancia que ofrece Analogizer es que permite usar adaptadores SNAC7 con conector USB 3 (tipo A) ya existentes en Analogizer con ciertas limitaciones.
