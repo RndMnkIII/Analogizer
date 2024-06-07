@@ -42,9 +42,26 @@
  It must be taken into account that the Blue212 type SNAC adapters use two boards (one of them is specific to the native control and has the native connector but does not have its own circuitry). The other board is a common design for all controls and is connected directly to the previous one, it provides all the electronics to convert voltage levels between the controls signals.
  and Analogizer.
 
-## Analogizer interface
+## Analogizer interface (development)
+The first modification that must be added to the original core code is to enable the Pocket's cartridge port. To do this we must edit the `core.json` file located in the same location as the core bitstream:
+
+```
+{
+  "core": {
+    "magic": "APF_VER_1",
+    ...
+        "framework": {
+      "target_product": "Analogue Pocket",
+      ...
+         "hardware": {
+           "link_port": false,
+           "cartridge_adapter": 0
+         },
+```
+
 As the creator of Analogizer I have also developed an interface in Verilog that encapsulates all the functionality in a single module that must be instantiated.
 This module is the one that connects the different parts involved so that everything works correctly.
+
 This module communicates with the adapter directly through the Pocket's cartridge expansion port. This port is available in the framework
 of Analogue openFPGA for the developer, using the following signals instantiated in the highest level module as follows:
 
@@ -143,8 +160,164 @@ Analogizer:
 | o_stb                  | OUTPUT   | 1     | Interface with the cartridge port. Connects directly to the signals of the higher level module                 |
 
 
+So that the user can modify the Analogizer options, three groups of options are established. These options are usually set in the `interact.js` file which is in the same location as the core bitstream. This may change in the case of cores that have different options depending on the game you want to load:
 
-So that the user can modify the Analogizer options, three groups of options are established:
+```
+{
+  "interact": {
+    "magic": "APF_VER_1",
+    "variables": [
+       {
+        "name": "SNAC Adapter",
+        "id": 43,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF7000000",
+        "defaultval": "0x00",
+        "mask": "0xFFFFFFE0",
+        "options": [
+            {
+            "value": "0x00",
+            "name": "None"
+            },
+            {
+            "value": "0x01",
+            "name": "DB15 Normal"
+            },
+            {
+            "value": "0x02",
+            "name": "NES"
+            },
+            {
+            "value": "0x03",
+            "name": "SNES"
+            },
+            {
+            "value": "0x04",
+            "name": "PCE 2BTN"
+            },
+            {
+            "value": "0x05",
+            "name": "PCE 6BTN"
+            },
+            {
+            "value": "0x06",
+            "name": "PCE Multitap"
+            },
+            {
+              "value": "0x09",
+              "name": "DB15 Fast"
+            },
+            {
+              "value": "0x0B",
+              "name": "SNES A,B<->X,Y"
+            }
+        ]
+    },
+    {
+        "name": "SNAC Controller Assignment",
+        "id": 44,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF7000000",
+        "defaultval": "0x00",
+        "mask": "0xFFFFFC3F",
+        "options": [
+            {
+              "value": "0x0",
+              "name": "SNAC -> P1"
+            },
+            {
+              "value": "0x40",
+              "name": "SNAC -> P2"
+            },
+            {
+              "value": "0x80",
+              "name": "SNAC P1,P2->P1,P2"
+            },
+            {
+              "value": "0xC0",
+              "name": "SNAC P1,P2->P2,P1"
+            },
+            {
+              "value": "0x200",
+              "name": "SNAC P1,P2->P3,P4"
+            },
+            {
+              "value": "0x100",
+              "name": "SNAC P1-P4->P1-P4"
+            },
+            {
+              "value": "0x140",
+              "name": "SNAC P1-P2->P1-P2"
+            },
+            {
+              "value": "0x180",
+              "name": "SNAC P1-P2->P3-P4"
+            }
+        ]
+    },
+    {
+        "name": "Analogizer Video Out",
+        "id": 45,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF7000000",
+        "defaultval": "0x0",
+        "mask": "0xFFFFC3FF",
+        "options": [
+            {
+              "value": "0x0",
+              "name": "RGBS"
+            },
+            {
+              "value": "0x0400",
+              "name": "RGsB"
+            },
+            {
+              "value": "0x0800",
+              "name": "YPbPr"
+            },
+            {
+              "value": "0x0C00",
+              "name": "Y/C NTSC"
+            },
+            {
+              "value": "0x1400",
+              "name": "Scandoubler RGBHV"
+            },
+            {
+              "value": "0x2000",
+              "name": "RGBS,Pocket OFF"
+            },
+            {
+              "value": "0x2400",
+              "name": "RGsB,Pocket OFF"
+            },
+            {
+              "value": "0x2800",
+              "name": "YPbPr,Pocket OFF"
+            },            {
+              "value": "0x2C00",
+              "name": "Y/C NTSC,Pocket OFF"
+            },
+            {
+              "value": "0x3400",
+              "name": "Scandoubler,Pocket OFF"
+            }
+        ]
+    },
+    ...
+        ],
+    "messages": []
+  }
+}
+```
+
+In a schematic way, these would be the different options that can be selected for Analogizer:
 
 ```
   SNAC Adapter
@@ -240,7 +413,6 @@ The interaction in the code is up to the developer, in this example it would loo
     end
   end
 ```
-
 
 
 It may be necessary to synchronize the reading of the options, when using different clock domains:

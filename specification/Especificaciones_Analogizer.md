@@ -41,7 +41,23 @@
  Hay que tener en cuenta que los adaptadores SNAC de tipo Blue212 usa dos placas (una de ellas es especifica del mando nativo y tiene el conector nativo pero no posee circuiteria propia). La otra placa es un diseño común para todos los mandos y se conecta directamente a la anterior, esta provee toda la electrónica para hacer la conversión de niveles de voltage entre las señales de los mandos
  y Analogizer. 
 
-## Interfaz Analogizer
+## Interfaz Analogizer (desarrollo)
+La primera modificación que hay que añadir al código del core original es habilitar el puerto de cartuchos de la Pocket. Para ello debemos editar el archivo `core.json` que se encuentra en la misma ubicación que el bitstream del core:
+
+```
+{
+  "core": {
+    "magic": "APF_VER_1",
+    ...
+        "framework": {
+      "target_product": "Analogue Pocket",
+      ...
+         "hardware": {
+           "link_port": false,
+           "cartridge_adapter": 0
+         },
+```
+
 Como creador del Analogizer he desarrollado también una interfaz en Verilog que encapsula toda la funcionalidad en un único módulo que hay que instanciar.
 Dicho modulo es el que conecta las diferentes partes implicadas para que funcione todo de manera correcta.
 Este módulo se comunica con el adaptador directamente a través del puerto de expansión de cartuchos de la Pocket. Este puerto está disponible en el framework
@@ -89,7 +105,6 @@ module apf_top (
 		...
 )
 ``` 
-
 
 Normalmente el módulo `openFPGA_Pocket_Analogizer`se instancia a un nivel mas bajo, donde se crea la instancia del módulo del core.
 Lo único que se precisa es conectar las señales requiridas entre el core de la maquina que se va a ejecutar y la instancia del módulo de
@@ -142,7 +157,164 @@ Analogizer:
 | o_stb                  | SALIDA   | 1     | signal used for debugging of the SNAC module in the development phase. Not necessary for normal use          |
 
 
-Para que el usuario pueda modificar las opciones de Analogizer se establecen tres grupos de opciones:
+Para que el usuario pueda modificar las opciones de Analogizer se establecen tres grupos de opciones. Estas opciones se establecen normalmente en el archivo `interact.js` que se encuentra en la misma ubicación que el bitstream del core. Esto puede cambiar en el caso de cores que tienen opciones diferentes en función del juego que se desea cargar:
+
+```
+{
+  "interact": {
+    "magic": "APF_VER_1",
+    "variables": [
+       {
+        "name": "SNAC Adapter",
+        "id": 43,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF7000000",
+        "defaultval": "0x00",
+        "mask": "0xFFFFFFE0",
+        "options": [
+            {
+            "value": "0x00",
+            "name": "None"
+            },
+            {
+            "value": "0x01",
+            "name": "DB15 Normal"
+            },
+            {
+            "value": "0x02",
+            "name": "NES"
+            },
+            {
+            "value": "0x03",
+            "name": "SNES"
+            },
+            {
+            "value": "0x04",
+            "name": "PCE 2BTN"
+            },
+            {
+            "value": "0x05",
+            "name": "PCE 6BTN"
+            },
+            {
+            "value": "0x06",
+            "name": "PCE Multitap"
+            },
+            {
+              "value": "0x09",
+              "name": "DB15 Fast"
+            },
+            {
+              "value": "0x0B",
+              "name": "SNES A,B<->X,Y"
+            }
+        ]
+    },
+    {
+        "name": "SNAC Controller Assignment",
+        "id": 44,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF7000000",
+        "defaultval": "0x00",
+        "mask": "0xFFFFFC3F",
+        "options": [
+            {
+              "value": "0x0",
+              "name": "SNAC -> P1"
+            },
+            {
+              "value": "0x40",
+              "name": "SNAC -> P2"
+            },
+            {
+              "value": "0x80",
+              "name": "SNAC P1,P2->P1,P2"
+            },
+            {
+              "value": "0xC0",
+              "name": "SNAC P1,P2->P2,P1"
+            },
+            {
+              "value": "0x200",
+              "name": "SNAC P1,P2->P3,P4"
+            },
+            {
+              "value": "0x100",
+              "name": "SNAC P1-P4->P1-P4"
+            },
+            {
+              "value": "0x140",
+              "name": "SNAC P1-P2->P1-P2"
+            },
+            {
+              "value": "0x180",
+              "name": "SNAC P1-P2->P3-P4"
+            }
+        ]
+    },
+    {
+        "name": "Analogizer Video Out",
+        "id": 45,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF7000000",
+        "defaultval": "0x0",
+        "mask": "0xFFFFC3FF",
+        "options": [
+            {
+              "value": "0x0",
+              "name": "RGBS"
+            },
+            {
+              "value": "0x0400",
+              "name": "RGsB"
+            },
+            {
+              "value": "0x0800",
+              "name": "YPbPr"
+            },
+            {
+              "value": "0x0C00",
+              "name": "Y/C NTSC"
+            },
+            {
+              "value": "0x1400",
+              "name": "Scandoubler RGBHV"
+            },
+            {
+              "value": "0x2000",
+              "name": "RGBS,Pocket OFF"
+            },
+            {
+              "value": "0x2400",
+              "name": "RGsB,Pocket OFF"
+            },
+            {
+              "value": "0x2800",
+              "name": "YPbPr,Pocket OFF"
+            },            {
+              "value": "0x2C00",
+              "name": "Y/C NTSC,Pocket OFF"
+            },
+            {
+              "value": "0x3400",
+              "name": "Scandoubler,Pocket OFF"
+            }
+        ]
+    },
+    ...
+        ],
+    "messages": []
+  }
+}
+```
+
+De forma esquematizada estas serían las diferentes opciones que se pueden seleccionar para Analogizer:
 
 ```
   SNAC Adapter
