@@ -33,7 +33,7 @@
 
 ## SNAC adapters for controllers
  The second most important functionality that Analogizer offers is that it allows you to use SNAC7 adapters with a USB 3 (type A) connector that already exist in Analogizer with certain limitations.
- This means that you can currently use native controllers that use 2- and 6-button Neogeo DB15, NES, SNES and PCEngine connectors and the NEC 5-player MultiTap adapter (currently 
+ This means that you can currently use native controllers for Neogeo DB15, NES, SNES and PCEngine 2btn and 6btn connectors and the NEC 5-player MultiTap adapter (currently 
  you are limited to 4 players by the Analogizer interface). That said, there are countless designs that in most cases will work without problems. In the README of the main Analogizer repository, the different types of adapters compatible with Analogizer will be added, there are versions for both 1 controller and 2 controllers (DB15, NES, SNES). For controls of the type
  PCEngine is also required to have a wiring harness specifically created for Analogizer (it is available for sale in the Analogizer online store and the pcb design is public for users interested in building it themselves). At one end it is connected to the SNAC adapter through a USB 3 female type A connector and at the other end it is
  connects Analogizer with a USB 3 male type A connector. USB 3 female-male extension cables can be used at the convenience of users and is the recommended connection method to avoid
