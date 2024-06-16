@@ -315,8 +315,8 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 	assign cart_tran_bank1         = i_rst | ~i_ena ? 8'hzz : {CART_BK1_OUT_P76,video_clk,Bout[5:1]};      //on reset state set ouput value to 8'hZ
 	assign cart_tran_bank1_dir     = i_rst | ~i_ena ? 1'b0  : 1'b1;                                     //on reset state set pin dir to input
 	//PIN30
-	assign cart_tran_pin30         = i_rst | ~i_ena ? 1'b0 : ((CART_PIN30_DIR) ? CART_PIN30_OUT : 1'bZ); //on reset state set ouput value to 4'hf
-	assign cart_tran_pin30_dir     = i_rst | ~i_ena ? 1'bz : CART_PIN30_DIR;                              //on reset state set pin dir to output
+	assign cart_tran_pin30         = i_rst | ~i_ena ? 1'bz : ((CART_PIN30_DIR) ? CART_PIN30_OUT : 1'bZ); //on reset state set ouput value to 4'hf
+	assign cart_tran_pin30_dir     = i_rst | ~i_ena ? 1'b0 : CART_PIN30_DIR;                              //on reset state set pin dir to output
 	assign CART_PIN30_IN           = cart_tran_pin30;
 	assign cart_pin30_pwroff_reset = i_rst | ~i_ena ? 1'b0 : 1'b1;                                      //1'b1 (GPIO USE)
 	//PIN31
