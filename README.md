@@ -145,3 +145,15 @@ Quiero agradecer la ayuda y apoyo recibidos de las siguientes personas y grupos 
 * @Denymetanol por su incansable ayuda y consejos y por dar un toque de estilismo al logo del Analogizer.
 * Al grupo de Telegram Analogue POCKET Español por sus comentarios, apoyo y sugerencias cerveceras ;-).
 * A todos los que de algún modo me han mostrado apoyo y me han animado a seguir con este proyecto.
+
+## Reconocimientos
+La interfaz de código Analogizer-FPGA emplea el siguiente código de manera total o parcial de otros proyectos:
+* La salida de video Y/C NTSC/PAL para SVideo y video compuesto está basado en el proyecto MiSTerFPGA_YC_Encoder de Mike Simone:
+  [https://github.com/MikeS11/MiSTerFPGA_YC_Encode](https://github.com/MikeS11/MiSTerFPGA_YC_Encoder)
+  
+* La salida de video YPbPr está basado en el módulo `vga_out.sv` del proyecto MiSTer FPGA:
+  [Template_MiSTer/sys/vga_out.sv](https://github.com/MiSTer-devel/Template_MiSTer/blob/master/sys/vga_out.sv)
+  
+* La salida de video scandoubler RGBHV está basada en el módulo `scandoubler.v` y el módulo `scanlines.v`del proyecto MiSTer FPGA:
+  [Template_MiSTer/sys/scandoubler.v](https://github.com/MikeS11/MiSTerFPGA_YC_Encoder)
+  [https://github.com/MiSTer-devel/Template_MiSTer/blob/master/sys/scanlines.v](https://github.com/MikeS11/MiSTerFPGA_YC_Encoder)
