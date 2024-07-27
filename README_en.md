@@ -10,6 +10,12 @@ https://github.com/jotego/jtbin/wiki/Analogue-Pocket-Cores#using-analogizer-with
 I've created a windows executable from the Python script tool to generate the `crtcfg.bin` file for configurate the @Jotego JT cores for Analogizer that can be executed as standalone command line tool:
 https://github.com/RndMnkIII/Analogizer/blob/main/JT_cores_configurator/jt-crtcfg.exe
 
+See how to use the tool and where is needed to copy the `crtcfg.bin`file:
+![How to execute the tool](https://github.com/RndMnkIII/Analogizer/blob/main/JT_cores_configurator/how_to_use1.PNG)
+![The generated crtcfg.bin file](https://github.com/RndMnkIII/Analogizer/blob/main/JT_cores_configurator/how_to_use2.PNG)
+![Where to copy](https://github.com/RndMnkIII/Analogizer/blob/main/img/JT_cores_configurator/how_to_use3.PNG)
+
+
 Another novelty for the JT Cores is the way in which the controls are configured. Up to four game controllers can be used simultaneously. To detect the controllers and in the order in which they are used, the following system is used: the first press of a button on a controller that is detected after starting the core will cause that controller to be assigned to player 1, the press of another button on another controller will assign that controller to player 2, and so on up to a maximum of 4 controllers for 4 players. You can mix SNAC controllers supported by Analogizer using the corresponding SNAC adapter for the type of controller, the controls on the Pocket itself, and the controllers that connect through the Dock.
 
 For the other Pocket openFPGA cores adapted by me, continue reading.
