@@ -148,6 +148,9 @@ Como usar la herramienta de configuración y donde copiar el archivo `crtcfg.bin
 ![The generated crtcfg.bin file](https://github.com/RndMnkIII/Analogizer/blob/main/JT_cores_configurator/how_to_use2.PNG)
 ![Where to copy](https://github.com/RndMnkIII/Analogizer/blob/main/JT_cores_configurator/how_to_use3.PNG)
 
+Tambien puedes usar la herramienta PUpdate de Matt Pannella para configurar Analogizer para los cores JT, comprueba el lanzamiento mas reciente en su repositorio GitHub:
+https://github.com/mattpannella/pupdate/releases
+
 Otra novedad para los cores JT es la forman en la que se configuran los mandos. Se pueden usar hasta cuatro mandos/controles de juegos de forma simultánea. Para detectar los mandos y en orden en el que se utilizan se emplea el siguiente sistema: la primera pulsación de un botón en un mando que se detecte tras iniciarse el core hará que se mando se asigne al jugador 1, la pulsación de otro botón en otro mando asignará ese mando al jugador 2, y así hasta un máximo de 4 mandos para 4 jugadores. Se pueden mezclar mandos SNAC soportados por Analogizer utilizando el adaptador SNAC correspondiente para el tipo de mando, los controles de la propia Pocket y los mandos que se conecten a través del Dock.
 
 Puedes apoyar el excelente trabajo de @Jotego aquí:
