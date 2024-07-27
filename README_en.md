@@ -4,7 +4,7 @@ Online Store: https://www.analogizer-fpga.com
 
 Adapter for the Analogue Pocket portable FPGA system that uses the cartridge expansion port to output analog RGB (18bit) Sync video through a VGA port using ADV7123 DAC and connect native game controllers of different types (DB15, NES, SNES, PCEngine) using the SNAC7 interface via USB 3 type A connector.
 
-For using @Jotego JTCores see instructions here: 
+To use @Jotego JT cores with Analogizer support, see instructions here:
 https://github.com/jotego/jtbin/wiki/Analogue-Pocket-Cores#using-analogizer-with-jt-cores
 
 I've created a windows executable from the Python script tool to generate the `crtcfg.bin` file for configurate the @Jotego JT cores for Analogizer that can be executed as standalone command line tool:

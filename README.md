@@ -7,7 +7,7 @@ Tienda Online: https://www.analogizer-fpga.com
 Adaptador para el sistema FPGA portatil Analogue Pocket que utiliza el puerto de expansión de cartuchos para generar salida de vídeo analogico RGB (18bit) Sync a través de un puerto VGA y conectar mandos de juegos nativos de diferentes tipos (DB15, NES, SNES, PCEngine) utilizando
 la interfaz SNAC7 mediante un conector USB3.
 
-Para usar @Jotego JTCores, consulte las instrucciones aquí:
+Para usar los cores JT de @Jotego con soporte para Analogizer, consulte las instrucciones aquí:
 https://github.com/jotego/jtbin/wiki/Analogue-Pocket-Cores#using-analogizer-with-jt-cores
 
 Creé un ejecutable de Windows desde la herramienta de secuencia de comandos Python para generar el archivo `crtcfg.bin` para configurar los núcleos @Jotego JT para Analogizer que se puede ejecutar como herramienta de línea de comandos independiente:
