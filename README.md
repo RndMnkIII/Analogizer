@@ -146,7 +146,7 @@ https://github.com/RndMnkIII/Analogizer/blob/main/JT_cores_configurator/jt-crtcf
 Como usar la herramienta de configuración y donde copiar el archivo `crtcfg.bin`:
 ![How to execute the tool](https://github.com/RndMnkIII/Analogizer/blob/main/JT_cores_configurator/how_to_use1.PNG)
 ![The generated crtcfg.bin file](https://github.com/RndMnkIII/Analogizer/blob/main/JT_cores_configurator/how_to_use2.PNG)
-![Where to copy](https://github.com/RndMnkIII/Analogizer/blob/main/img/JT_cores_configurator/how_to_use3.PNG)
+![Where to copy](https://github.com/RndMnkIII/Analogizer/blob/main/JT_cores_configurator/how_to_use3.PNG)
 
 Otra novedad para los cores JT es la forman en la que se configuran los mandos. Se pueden usar hasta cuatro mandos/controles de juegos de forma simultánea. Para detectar los mandos y en orden en el que se utilizan se emplea el siguiente sistema: la primera pulsación de un botón en un mando que se detecte tras iniciarse el core hará que se mando se asigne al jugador 1, la pulsación de otro botón en otro mando asignará ese mando al jugador 2, y así hasta un máximo de 4 mandos para 4 jugadores. Se pueden mezclar mandos SNAC soportados por Analogizer utilizando el adaptador SNAC correspondiente para el tipo de mando, los controles de la propia Pocket y los mandos que se conecten a través del Dock.
 
@@ -158,11 +158,10 @@ Busca aquí https://openfpga-cores-inventory.github.io/analogue-pocket/ el térm
 
 ## Agradecimientos
 Quiero agradecer la ayuda y apoyo recibidos de las siguientes personas y grupos en relación con este proyecto:
+* @Jotego por aplicar todo su buen hacer y conocimientos para hacer posible que todos sus cores funcionen con Analogizer
 * @Denymetanol por su incansable ayuda y consejos y por dar un toque de estilismo al logo del Analogizer.
-* Al grupo de Telegram Analogue POCKET Español por sus comentarios, apoyo y sugerencias cerveceras ;-).
+* Al grupo de Telegram Analogue POCKET Español por sus comentarios, apoyo y sugerencias cerveceras.
 * A todos los que de algún modo me han mostrado apoyo y me han animado a seguir con este proyecto.
-
-
 
 ## Reconocimientos
 La interfaz de código Analogizer-FPGA emplea el siguiente código de manera total o parcial de otros proyectos:
