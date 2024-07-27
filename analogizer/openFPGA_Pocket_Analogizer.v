@@ -69,11 +69,12 @@
 `default_nettype none
 `timescale 1ns / 1ps
 
-module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
+module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parameter LINE_LENGTH) (
 	input wire i_clk,
     input wire i_rst,
 	input wire i_ena,
 	//Video interface
+	input wire video_clk,
 	input wire [3:0] analog_video_type,
 	input wire [7:0] R,
 	input wire [7:0] G,
@@ -84,17 +85,13 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 	input wire Hsync,
 	input wire Vsync,
 	input wire Csync,
-	input wire video_clk,
 	//Video Y/C Encoder interface
-	input wire PALFLAG,
-	//input wire CVBS,
-	input wire MULFLAG,
-	input wire [4:0] CHROMA_ADD,
-	input wire [4:0] CHROMA_MULT,
 	input wire [39:0] CHROMA_PHASE_INC,
-	input wire [26:0] COLORBURST_RANGE,
+	input wire PALFLAG,
 	//Video SVGA Scandoubler interface
-	input wire [2:0] ce_divider,
+	input wire ce_pix,
+	input wire scandoubler, //logic for disable/enable the scandoubler
+	input wire [2:0] fx, //0 disable, 1 scanlines 25%, 2 scanlines 50%, 3 scanlines 75%, 4 hq2x
 	//SNAC interface
     input wire conf_AB,              //0 conf. A(default), 1 conf. B (see graph above)
     input wire [4:0] game_cont_type, //0-15 Conf. A, 16-31 Conf. B
@@ -162,7 +159,7 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 	reg [5:0] Rout, Gout, Bout;
 	reg HsyncOut, VsyncOut, BLANKnOut;
 	wire [7:0] Yout, PrOut, PbOut;
-	wire [5:0] R_Sd, G_Sd, B_Sd;
+	wire [7:0] R_Sd, G_Sd, B_Sd;
 	wire Hsync_Sd, Vsync_Sd;
 	wire Hblank_Sd, Vblank_Sd;
 	wire BLANKn_SD = ~(Hblank_Sd || Vblank_Sd);
@@ -202,11 +199,11 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 				BLANKnOut = 1'b1; //ADV7123 needs this
 			end
 			4'h5, 4'hD: begin //Scandoubler modes
-				Rout = R_Sd;
-				Gout = G_Sd;
-				Bout = B_Sd;
-				HsyncOut = Hsync_Sd;
-				VsyncOut = Vsync_Sd;
+				Rout = vga_data_sl[23:18]; //R_Sd[7:2];
+				Gout = vga_data_sl[15:10]; //G_Sd[7:2];
+				Bout = vga_data_sl[7:2]; //B_Sd[7:2];
+				HsyncOut = vga_hs_sl; //Hsync_Sd;
+				VsyncOut = vga_vs_sl; //Vsync_Sd;
 				BLANKnOut = 1'b1;
 			end
 			default: begin
@@ -219,6 +216,34 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 			end
 		endcase
 	end
+
+
+	//First Stage: video fix
+	// wire hs_fix,vs_fix;
+	// sync_fix sync_v(video_clk, HSync, hs_fix);
+	// sync_fix sync_h(video_clk, VSync, vs_fix);
+
+	// reg [DW-1:0] RGB_fix;
+
+	// reg CE_fix,HS_fix,VS_fix,HBL_fix,VBL_fix;
+	// always @(posedge video_clk) begin
+	// 	reg old_ce;
+	// 	old_ce <= ce_pix;
+	// 	CE_fix <= 0;
+	// 	if(~old_ce & ce_pix) begin
+	// 		CE_fix <= 1;
+	// 		HS_fix <= hs_fix;
+	// 		if(~HS_fix & hs_fix) VS_fix <= vs_fix;
+
+	// 		RGB_fix <= {R,G,B};
+	// 		HBL_fix <= HBlank;
+	// 		if(HBL_fix & ~HBlank) VBL_fix <= VBlank;
+	// 	end
+	// end
+
+	// //Csync generation
+	// wire CSYNC_fix;
+	// csync csync_fix(video_clk, HS_fix, VS_fix, CSYNC_fix);
 
 	wire YPbPr_sync, YPbPr_blank;
 	vga_out ybpr_video
@@ -239,66 +264,81 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000) (
 	yc_out yc_out
 	(
 		.clk(i_clk),
-		.PAL_EN(PALFLAG),
-		.CVBS(1'b0),
 		.PHASE_INC(CHROMA_PHASE_INC),
-		.COLORBURST_RANGE(COLORBURST_RANGE),
-		.MULFLAG(MULFLAG),
-		.CHRADD(CHROMA_ADD), //fine tune 0-31
-		.CHRMUL(CHROMA_MULT), //fine tune 0-31
+		.PAL_EN(PALFLAG),
 		.hsync(Hsync),
 		.vsync(Vsync),
 		.csync(Csync),
-		.dout(yc_o),
-		//.din(rgb_color_r),
     	.din({R&{8{BLANKn}},G&{8{BLANKn}},B&{8{BLANKn}}}),
+		.dout(yc_o),
 		.hsync_o(),
 		.vsync_o(),
 		.csync_o(yc_cs)
 	);
 
-
-	//delay hsync one pixel clock period
-	// reg [1:0] delayed_hsync = 0;
-	// reg pclk_r = 0;
-	// always @(posedge i_clk) begin
-	// 	pclk_r <= video_clk;
-	// 	if(!pclk_r && video_clk) begin
-	// 		delayed_hsync[0] <= Hsync;
-	// 		delayed_hsync[1] <= delayed_hsync[0];
-	// 	end
-	// end
-	scandoubler sc_video
+	wire ce_pix_Sd;
+	scandoubler_2 #(.LENGTH(LINE_LENGTH), .HALF_DEPTH(0)) sd
 	(
-		// system interface
-		.clk_sys(i_clk),
-		.bypass(1'b0),
+		.clk_vid(i_clk),
+		.hq2x(fx[2]),
 
-		// Pixelclock
-		.ce_divider(ce_divider), // 0 - clk_sys/4, 1 - clk_sys/2, 2 - clk_sys/3, 3 - clk_sys/4, etc.
-		//.ce_divider(3'd0), // 0 - clk_sys/4, 1 - clk_sys/2, 2 - clk_sys/3, 3 - clk_sys/4, etc.
-		.pixel_ena(), //output
-		.scanlines(2'd2), // scanlines (00-none 01-25% 10-50% 11-75%)
-
-		// shifter video interface
+		.ce_pix(ce_pix),
+		.hs_in(Hsync),
+		.vs_in(Vsync),
 		.hb_in(Hblank),
 		.vb_in(Vblank),
-		.hs_in(Hsync),
-		//.hs_in(delayed_hsync[1]),
-		.vs_in(Vsync),
-		.r_in({R[7:2]&{6{BLANKn}}}),
-		.g_in({G[7:2]&{6{BLANKn}}}),
-		.b_in({B[7:2]&{6{BLANKn}}}),
+		.r_in({R[7:0]&{8{BLANKn}}}),
+		.g_in({G[7:0]&{8{BLANKn}}}),
+		.b_in({B[7:0]&{8{BLANKn}}}),
 
-		// output interface
-		.hb_out(Hblank_Sd),
-		.vb_out(Vblank_Sd),
+		.ce_pix_out(ce_pix_Sd),
 		.hs_out(Hsync_Sd),
 		.vs_out(Vsync_Sd),
+		.hb_out(Hblank_Sd),
+		.vb_out(Vblank_Sd),
 		.r_out(R_Sd),
 		.g_out(G_Sd),
 		.b_out(B_Sd)
 	);
+
+	reg Hsync_SL, Vsync_SL, Hblank_SL, Vblank_SL;
+	reg [7:0] R_SL, G_SL, B_SL;
+	reg CE_PIX_SL, DE_SL;
+
+	always @(posedge video_clk) begin
+		Hsync_SL <= (scandoubler) ? Hsync_Sd : Hsync;
+		Vsync_SL <= (scandoubler) ? Vsync_Sd : Vsync;
+		Hblank_SL <= (scandoubler) ? Hblank_Sd : Hblank;
+		Vblank_SL <= (scandoubler) ? Vblank_Sd : Vblank;
+		R_SL <= (scandoubler) ? R_Sd    : {R[7:0]&{8{BLANKn}}};
+		G_SL <= (scandoubler) ? G_Sd    : {G[7:0]&{8{BLANKn}}};
+		B_SL <= (scandoubler) ? B_Sd    : {B[7:0]&{8{BLANKn}}};
+		CE_PIX_SL <= (scandoubler) ? ce_pix_Sd : ce_pix;
+		DE_SL <= BLANKn;
+	end
+
+
+wire [23:0] vga_data_sl;
+wire        vga_vs_sl, vga_hs_sl;
+scanlines #(0) VGA_scanlines
+(
+	.clk(video_clk),
+
+	.scanlines(fx[1:0]),
+	//.din(de_emu ? {R_SL, G_SL,B_SL} : 24'd0),
+	.din({R_SL, G_SL,B_SL}),
+	.hs_in(Hsync_SL),
+	.vs_in(Vsync_SL),
+	.de_in(DE_SL),
+	.ce_in(CE_PIX_SL),
+
+	.dout(vga_data_sl),
+	.hs_out(vga_hs_sl),
+	.vs_out(vga_vs_sl),
+	.de_out(),
+	.ce_out()
+);
+
 
 	//infer tri-state buffers for cartridge data signals
 	//BK0

@@ -159,7 +159,7 @@ module pcengine_game_controller_multitap #(parameter MASTER_CLK_FREQ=50_000_000)
 
                         counter <= 0;
                         scan_number <= 0;
-                        counter_top_value <= 5'd12;
+                        counter_top_value <= 5'd19;
 
                         sel_internal <= 1'b1;
                         clr_internal <= 1'b0;

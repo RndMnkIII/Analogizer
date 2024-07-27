@@ -112,6 +112,7 @@ module pcengine_game_controller #(parameter MASTER_CLK_FREQ=50_000_000, paramete
                         if(game_controller_type_r == 4'h5) begin
                             //6btn mapping
                             //                    START    SELECT   R3 L3 R2 L2 R1        L1        Y        X        B        A        RIGH     LEFT     DOWN     UP 
+                            //                    15       14       13 12 11 10  9         8        7        6        5        4        3        2        1        0                               
                             player_btn_state <= ~{pb_r[7], pb_r[6], 4'b1111,    pb_r[11], pb_r[10], pb_r[9], pb_r[8], pb_r[5], pb_r[4], pb_r[1], pb_r[3], pb_r[2], pb_r[0]};
                         end
                         else if (game_controller_type_r == 4'h4) begin

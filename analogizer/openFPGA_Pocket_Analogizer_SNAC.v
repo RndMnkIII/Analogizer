@@ -121,6 +121,9 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     localparam serlatch_fast_polling_freq      =   400_000; //  400_000 / 25 = 16K samples/sec DB15    400_000 / 18 = 22.22K samples/sec NES/SNES
     // localparam serlatch_very_fast_polling_freq = 1_000_000; //1_000_000 / 25 = 32K samples/sec DB15  1_000_000 / 18 = 55.55K samples/sec NES/SNES
 
+    localparam psx_normal_polling_freq = 125_000;
+    localparam psx_fast_polling_freq = 250_000;
+
 
     //the FSM is clocked 2x the polling freq.
     localparam [32:0] MAX_INT = 33'h0ffffffff;
@@ -128,8 +131,13 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     // localparam [32:0] pce_compat_pstep  = pce_compat_pstep_[32:0];
     localparam [64:0] pce_normal_pstep_ = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) * pce_normal_polling_freq * 2) / 1000;
     localparam [32:0] pce_normal_pstep  = pce_normal_pstep_[32:0];
-    localparam [64:0] pce_fast_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) *pce_fast_polling_freq * 2) / 1000;
+    localparam [64:0] pce_fast_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) * pce_fast_polling_freq * 2) / 1000;
     localparam [32:0] pce_fast_pstep    = pce_fast_pstep_[32:0];
+
+    localparam [64:0] psx_fast_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) * psx_fast_polling_freq * 2) / 1000;
+    localparam [32:0] psx_fast_pstep    = psx_fast_pstep_[32:0];
+    localparam [64:0] psx_normal_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) * psx_normal_polling_freq * 2) / 1000;
+    localparam [32:0] psx_normal_pstep    = psx_normal_pstep_[32:0];
     // localparam [64:0] pce_very_fast_pstep_   = ((MAX_INT / (MASTER_CLK_FREQ / 1000)) *pce_very_fast_polling_freq * 2) / 1000;
     // localparam [32:0] pce_very_fast_pstep    = pce_very_fast_pstep_[32:0];
 
@@ -160,7 +168,8 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
     localparam GC_PCE_MULTITAP = 5'h6;
     localparam GC_DB15_FAST    = 5'h9;
     localparam GC_SNES_SWAP    = 5'hB;
-    //parameter GC_PSX= 5'h16;
+    localparam GC_PSX          = 5'h10; //16 PSX 125KHz
+    localparam GC_PSX_FAST     = 5'h11; //17 PSX 250KHz
 
     //Configuration:
     localparam CONF_A = 1'b0;
@@ -188,11 +197,22 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
 
     reg serlat_ena;
     reg pce_ena;
+    reg psx_ena;
+
     always @(posedge i_clk) begin
         serlat_ena <= 1'b0;
         pce_ena    <= 1'b0;
+        psx_ena    <= 1'b0;
 
         case (game_cont_type)
+            GC_PSX: begin
+                psx_ena    <= 1'b1;
+                strobe_step_size <= psx_normal_pstep;   
+            end
+            GC_PSX_FAST: begin
+                psx_ena    <= 1'b1;
+                strobe_step_size <= psx_fast_pstep;   
+            end
             GC_DB15: begin 
                 serlat_ena <= 1'b1;
                 strobe_step_size <= serlatch_normal_pstep;    
@@ -290,6 +310,8 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
 
     assign o_stb = stb_clk;
 
+    //PSX game controller for 2 players
+
     //DB15/NES/SNES game controller
     wire [15:0] sl_p1 /* synthesis keep */;
     wire [15:0] sl_p2 /* synthesis keep */;
@@ -309,7 +331,7 @@ module openFPGA_Pocket_Analogizer_SNAC #(parameter MASTER_CLK_FREQ=50_000_000)
         .o_clk(SERLAT_SNAC_OUT1), //shared for 2 controllers
         .o_clk2(SNAC_IO5_A),
         .o_lat(SERLAT_SNAC_OUT2), //shared for 2 controllers
-        .i_dat1(SNAC_IO3_A), //data from controller 1
+        .i_dat1((game_cont_type == 5'h1 || game_cont_type == 5'h9) ? SNAC_IO3_A & SNAC_IO6_A : SNAC_IO3_A ), //data from controller 1
         .i_dat2(SNAC_IN7)  //data from controller 2
     );
 
