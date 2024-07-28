@@ -173,7 +173,7 @@ Busca aquí https://openfpga-cores-inventory.github.io/analogue-pocket/ el térm
 
 ## Agradecimientos
 Quiero agradecer la ayuda y apoyo recibidos de las siguientes personas y grupos en relación con este proyecto:
-* @Jotego por aplicar todo su buen hacer y conocimientos para hacer posible que todos sus cores funcionen con Analogizer
+* @Jotego y al resto de equipo JT por aplicar todo su buen hacer y conocimientos para hacer posible que todos sus cores funcionen con Analogizer
 * @Denymetanol por su incansable ayuda y consejos y por dar un toque de estilismo al logo del Analogizer.
 * Al grupo de Telegram Analogue POCKET Español por sus comentarios, apoyo y sugerencias cerveceras.
 * A todos los que de algún modo me han mostrado apoyo y me han animado a seguir con este proyecto.

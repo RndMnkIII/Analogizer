@@ -165,7 +165,7 @@ Search here https://openfpga-cores-inventory.github.io/analogue-pocket/ for "ANA
 
 ## Thanks
 I would like to acknowledge the help and support received from the following people and groups in relation to this project:
-* To @Jotego for applying all his good work and knowledge to make it possible for all his cores to work with Analogizer.
+* To @Jotego and the JT Team for applying all his good work and knowledge to make it possible for all his cores to work with Analogizer.
 * To Matt Pannella (https://github.com/mattpannella) for supporting Analogizer settings in his pupdate tool.
 * @Denymetanol for his tireless help and advice and for giving a touch of style to the Analogizer logo.
 * To the Telegram group Analogue POCKET Español for their comments, support and beer suggestions.
