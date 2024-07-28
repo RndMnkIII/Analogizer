@@ -1,12 +1,4 @@
 # Analogizer-FPGA
-![Analogizer Logo](https://github.com/RndMnkIII/Analogizer/blob/main/img/logo_Analogizer-FPGA.png)
-Tienda Online: https://www.analogizer-fpga.com
-
-[English Version](https://github.com/RndMnkIII/Analogizer/blob/main/README_en.md)
-
-Adaptador para el sistema FPGA portatil Analogue Pocket que utiliza el puerto de expansión de cartuchos para generar salida de vídeo analogico RGB (18bit) Sync a través de un puerto VGA y conectar mandos de juegos nativos de diferentes tipos (DB15, NES, SNES, PCEngine) utilizando
-la interfaz SNAC7 mediante un conector USB3.
-
 - [Analogizer-FPGA](#analogizer-fpga)
   - [Especificaciones:](#especificaciones)
   - [NUEVO: Analogizer R2 (Mejorado):](#nuevo-analogizer-r2-mejorado)
@@ -19,6 +11,13 @@ la interfaz SNAC7 mediante un conector USB3.
   - [Agradecimientos](#agradecimientos)
   - [Reconocimientos](#reconocimientos)
 
+![Analogizer Logo](https://github.com/RndMnkIII/Analogizer/blob/main/img/logo_Analogizer-FPGA.png)
+Tienda Online: https://www.analogizer-fpga.com
+
+[English Version](https://github.com/RndMnkIII/Analogizer/blob/main/README_en.md)
+
+Adaptador para el sistema FPGA portatil Analogue Pocket que utiliza el puerto de expansión de cartuchos para generar salida de vídeo analogico RGB (18bit) Sync a través de un puerto VGA y conectar mandos de juegos nativos de diferentes tipos (DB15, NES, SNES, PCEngine) utilizando
+la interfaz SNAC7 mediante un conector USB3.
 
 ## Especificaciones:
 https://github.com/RndMnkIII/Analogizer/blob/main/specification/Especificaciones_Analogizer.md
