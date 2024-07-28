@@ -4,6 +4,18 @@ Online Store: https://www.analogizer-fpga.com
 
 Adapter for the Analogue Pocket portable FPGA system that uses the cartridge expansion port to output analog RGB (18bit) Sync video through a VGA port using ADV7123 DAC and connect native game controllers of different types (DB15, NES, SNES, PCEngine) using the SNAC7 interface via USB 3 type A connector.
 
+- [Analogizer-FPGA](#analogizer-fpga)
+	- [Specifications:](#specifications)
+	- [NEW: Analogizer R2 (Improved):](#new-analogizer-r2-improved)
+	- [What do you need to use it?](#what-do-you-need-to-use-it)
+	- [List of native drivers supported by Analogizer (requires the corresponding SNAC7 adapter):](#list-of-native-drivers-supported-by-analogizer-requires-the-corresponding-snac7-adapter)
+	- [How to use?](#how-to-use)
+		- [How to connect the Analogizer?](#how-to-connect-the-analogizer)
+	- [JT Cores](#jt-cores)
+	- [List of cores with Analogizer support](#list-of-cores-with-analogizer-support)
+	- [Thanks](#thanks)
+	- [Acknowledge](#acknowledge)
+
 ## Specifications:
 https://github.com/RndMnkIII/Analogizer/blob/main/specification/Analogizer_specifications.md
 
