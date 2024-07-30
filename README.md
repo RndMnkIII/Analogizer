@@ -6,5 +6,6 @@ Ahora tienes toda la información de Analogizer-FPGA en la [Wiki](https://github
 
 Now you have all the information about Analogizer-FPGA in the [Wiki](https://github.com/RndMnkIII/Analogizer/wiki)
 
-[Tienda Online](https://www.analogizer-fpga.com)
+[Tienda Online/Online Store](https://www.analogizer-fpga.com)
+
 
