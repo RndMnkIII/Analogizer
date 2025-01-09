@@ -1,25 +1,3 @@
-//MIT License
-//
-// Copyright (c) 2024 RndMnkIII
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
 //This module encapsulates all Analogizer adapter signals
 // Original work by @RndMnkIII. 
 // Date: 05/2024 
@@ -118,9 +96,18 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
     input wire conf_AB,              //0 conf. A(default), 1 conf. B (see graph above)
     input wire [4:0] game_cont_type, //0-15 Conf. A, 16-31 Conf. B
     output wire [15:0] p1_btn_state,
+	output wire [31:0] p1_joy_state,
     output wire [15:0] p2_btn_state,
+	output wire [31:0] p2_joy_state,
     output wire [15:0] p3_btn_state,
     output wire [15:0] p4_btn_state,
+	//PSX rumble interface joy1, joy2
+    input [1:0] i_VIB_SW1,  //  Vibration SW  VIB_SW[0] Small Moter OFF 0:ON  1:
+                                //VIB_SW[1] Bic Moter   OFF 0:ON  1(Dualshook Only)
+	input [7:0] i_VIB_DAT1,  //  Vibration(Bic Moter)Data   8'H00-8'HFF (Dualshook Only)
+    input [1:0] i_VIB_SW2,
+	input [7:0] i_VIB_DAT2, 
+	// 
 	output wire busy, 
 	//Pocket Analogizer IO interface to the cartridge port
 	inout   wire    [7:0]   cart_tran_bank2,
@@ -137,6 +124,7 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 	inout   wire            cart_tran_pin31,
 	output  wire            cart_tran_pin31_dir,
     //debug
+	output wire [3:0] DBG_TX,
     output wire o_stb
 );
 	wire [7:4] CART_BK0_OUT ;
@@ -158,9 +146,12 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 		.game_cont_type(game_cont_type), //0-15 Conf. A, 16-31 Conf. B
 		//.game_cont_sample_rate(game_cont_sample_rate), //0 compatibility mode (slowest), 1 normal mode, 2 fast mode, 3 superfast mode
 		.p1_btn_state(p1_btn_state),
+		.p1_joy_state(p1_joy_state),
 		.p2_btn_state(p2_btn_state),
+		.p2_joy_state(p2_joy_state),
 		.p3_btn_state(p3_btn_state),
 		.p4_btn_state(p4_btn_state),
+		.i_VIB_SW1(i_VIB_SW1), .i_VIB_DAT1(i_VIB_DAT1), .i_VIB_SW2(i_VIB_SW2), .i_VIB_DAT2(i_VIB_DAT2), 
 		.busy(busy),    
 		//SNAC Pocket cartridge port interface (see graph above)   
 		.CART_BK0_OUT(CART_BK0_OUT),
@@ -174,17 +165,18 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 		.CART_PIN31_IN(CART_PIN31_IN),
 		.CART_PIN31_DIR(CART_PIN31_DIR),
 		//debug
+		.DBG_TX(DBG_TX),
     	.o_stb(o_stb)
 	); 
 
 	//Choose type of analog video type of signal
-	reg [5:0] Rout, Gout, Bout;
-	reg HsyncOut, VsyncOut, BLANKnOut;
-	wire [7:0] Yout, PrOut, PbOut;
-	wire [7:0] R_Sd, G_Sd, B_Sd;
-	wire Hsync_Sd, Vsync_Sd;
-	wire Hblank_Sd, Vblank_Sd;
-	wire BLANKn_SD = ~(Hblank_Sd || Vblank_Sd);
+	reg [5:0] Rout, Gout, Bout /* synthesis preserve */;
+	reg HsyncOut, VsyncOut, BLANKnOut /* synthesis preserve */;
+	wire [7:0] Yout, PrOut, PbOut /* synthesis keep */;
+	wire [7:0] R_Sd, G_Sd, B_Sd /* synthesis keep */;
+	wire Hsync_Sd, Vsync_Sd /* synthesis keep */;
+	wire Hblank_Sd, Vblank_Sd /* synthesis keep */;
+	wire BLANKn_SD = ~(Hblank_Sd || Vblank_Sd) /* synthesis keep */;
 
 	always @(*) begin
 		case(analog_video_type)
@@ -220,7 +212,7 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 				VsyncOut = YPbPr_sync; //to DAC SYNC pin, SWITCH SOG ON
 				BLANKnOut = 1'b1; //ADV7123 needs this
 			end
-			4'h5, 4'hD: begin //Scandoubler modes
+			4'h5, 4'h6, 4'h7, 4'hD, 4'hE, 4'hF: begin //Scandoubler modes
 				Rout = vga_data_sl[23:18]; //R_Sd[7:2];
 				Gout = vga_data_sl[15:10]; //G_Sd[7:2];
 				Bout = vga_data_sl[7:2]; //B_Sd[7:2];
@@ -231,7 +223,7 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 			default: begin
 				Rout = 6'h0;
 				Gout = 6'h0;
-				Bout = 6'h3F;
+				Bout = 6'h0;
 				HsyncOut = Hsync;
 				VsyncOut = 1'b1;
 				BLANKnOut = BLANKn;
@@ -280,9 +272,9 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 		.de_o(YPbPr_blank)
 	);
 
-	wire [23:0] yc_o;
+	wire [23:0] yc_o /* synthesis keep */;
 	//wire yc_hs, yc_vs, 
-	wire yc_cs;
+	wire yc_cs /* synthesis keep */;
 	yc_out yc_out
 	(
 		.clk(i_clk),
@@ -298,7 +290,7 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 		.csync_o(yc_cs)
 	);
 
-	wire ce_pix_Sd;
+	wire ce_pix_Sd /* synthesis keep */;
 	scandoubler_2 #(.LENGTH(LINE_LENGTH), .HALF_DEPTH(0)) sd
 	(
 		.clk_vid(i_clk),
@@ -323,9 +315,9 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 		.b_out(B_Sd)
 	);
 
-	reg Hsync_SL, Vsync_SL, Hblank_SL, Vblank_SL;
-	reg [7:0] R_SL, G_SL, B_SL;
-	reg CE_PIX_SL, DE_SL;
+	reg Hsync_SL, Vsync_SL, Hblank_SL, Vblank_SL /* synthesis preserve */;
+	reg [7:0] R_SL, G_SL, B_SL /* synthesis preserve */;
+	reg CE_PIX_SL, DE_SL /* synthesis preserve */;
 
 	always @(posedge video_clk) begin
 		Hsync_SL <= (scandoubler) ? Hsync_Sd : Hsync;
@@ -340,9 +332,9 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 	end
 
 
-wire [23:0] vga_data_sl;
-wire        vga_vs_sl, vga_hs_sl;
-scanlines #(0) VGA_scanlines
+wire [23:0] vga_data_sl /* synthesis keep */;
+wire        vga_vs_sl, vga_hs_sl /* synthesis keep */;
+scanlines_analogizer #(0) VGA_scanlines
 (
 	.clk(video_clk),
 

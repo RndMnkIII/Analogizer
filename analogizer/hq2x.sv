@@ -243,7 +243,7 @@ assign q0 = out[rdbuf0];
 assign q1 = out[rdbuf1];
 
 hq2x_buf #(.NUMWORDS(LENGTH), .AWIDTH(AWIDTH), .DWIDTH(DWIDTH)) buf0(clk,data,rdaddr,wraddr,wren && (wrbuf == 0),out[0]);
-hq2x_buf #(.NUMWORDS(LENGTH), .AWIDTH(AWIDTH), .DWIDTH(DWIDTH)) buf1(clk,data,rdaddr,wraddr,wren && (wrbuf == 1),out[1]);
+hq2x_buf2 #(.NUMWORDS(LENGTH), .AWIDTH(AWIDTH), .DWIDTH(DWIDTH)) buf1(clk,data,rdaddr,wraddr,wren && (wrbuf == 1),out[1]);
 
 endmodule
 
@@ -258,6 +258,23 @@ module hq2x_buf #(parameter NUMWORDS, parameter AWIDTH, parameter DWIDTH)
 );
 
 reg [DWIDTH:0] ram[0:NUMWORDS-1];
+
+always_ff@(posedge clock) begin
+	if(wren) ram[wraddress] <= data;
+	q <= ram[rdaddress];
+end
+
+module hq2x_buf2 #(parameter NUMWORDS, parameter AWIDTH, parameter DWIDTH)
+(
+	input                 clock,
+	input      [DWIDTH:0] data,
+	input      [AWIDTH:0] rdaddress,
+	input      [AWIDTH:0] wraddress,
+	input                 wren,
+	output reg [DWIDTH:0] q
+);
+
+(* ramstyle = "MLAB" *) reg [DWIDTH:0] ram[0:NUMWORDS-1];
 
 always_ff@(posedge clock) begin
 	if(wren) ram[wraddress] <= data;
