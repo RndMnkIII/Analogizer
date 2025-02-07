@@ -1,0 +1,32 @@
+| Core Repository                                                  | Latest Release | Config. Type    | Supported SNAC controllers | Supported Video output     |
+|------------------------------------------------------------------|:--------------:|-----------------|----------------------------|--------------------------- |
+| https://github.com/jotego/jtcores                                | check online   | [JT Config File](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#jt-config-file)  | DB15,NES,SNES,PCEngine     | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/Analogizer-Amiga                    |     0.3.2      | [Analogizer File](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#analogizer-file) | DB15,NES,SNES,PCEngine,PSX | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/Analogizer_Mazamars312_Neogeo_0.8.1 |     1.1.3      | [Analogizer File](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#analogizer-file) | DB15,NES,SNES,PCEngine,PSX | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/Analogizer_openFPGA-Genesis         |     1.0.3      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine,PSX | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/openfpga-pcengine-cd_Analogizer     |     1.0.3      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine,PSX | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/Analogizer_openfpga-pcengine        |     1.1.1      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine,PSX | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/openfpga-SNES-Analogizer            |     1.0.2      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine,PSX | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/Analogizer-openfpga-AtariLynx       |     1.0.1      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine,PSX | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/Analogizer_openfpga-GBC             |     1.0.1      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine,PSX | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/Analogizer_arcade-slapfight         |     1.0.1      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine,PSX | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/Analogizer-openFPGA-AtariSystem1    |     1.0.1      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine     | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/Analogizer_openFPGA-Gauntlet        |     1.0.2      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine     | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+| https://github.com/RndMnkIII/arcade-irem_m92_Analogizer          |     1.0.2      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine     | RGBS,RGsB,YPbPr*,Y/C,RGBHV |
+| https://github.com/RndMnkIII/Analogizer-Pocket-Alpha-Mission     |      1.1       | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine     | RGBS,RGsB,YPbPr            |
+| https://github.com/RndMnkIII/openfpga-NES-Analogizer             |     1.0.1      | [Pocket Menu](https://github.com/RndMnkIII/Analogizer/wiki/Supported-Cores-and-How-to-Configure-Them#pocket-menu)     | DB15,NES,SNES,PCEngine     | RGBS,RGsB,YPbPr,Y/C,RGBHV  |
+
+
+# JT Config File
+Uses Pupdate utility to create `crtcfg.bin` file stored in `Assets/jtpatreon/common` folder. The settings stored in this file are shared between all JT core.
+
+# Analogizer File
+Uses Pupdate utility to create `analogizer.bin` file stored in `Assets/analogizer/common` folder. The settings storeD in this file are shared between all standard cores (non-JT).
+
+# Pocket Menu
+Use the Pocket's own menu to display and select options. This is done for each core.
+
+
+
+
+
