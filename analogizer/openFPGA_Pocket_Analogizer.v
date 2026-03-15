@@ -176,7 +176,7 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 	wire [7:0] R_Sd, G_Sd, B_Sd /* synthesis keep */;
 	wire Hsync_Sd, Vsync_Sd /* synthesis keep */;
 	wire Hblank_Sd, Vblank_Sd /* synthesis keep */;
-	wire BLANKn_SD = ~(Hblank_Sd || Vblank_Sd) /* synthesis keep */;
+	//wire BLANKn_SD = ~(Hblank_Sd || Vblank_Sd) /* synthesis keep */;
 
 	always @(*) begin
 		case(analog_video_type)
@@ -212,12 +212,20 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 				VsyncOut = YPbPr_sync; //to DAC SYNC pin, SWITCH SOG ON
 				BLANKnOut = 1'b1; //ADV7123 needs this
 			end
-			4'h5, 4'h6, 4'h7, 4'hD, 4'hE, 4'hF: begin //Scandoubler modes
-				Rout = vga_data_sl[23:18]; //R_Sd[7:2];
-				Gout = vga_data_sl[15:10]; //G_Sd[7:2];
-				Bout = vga_data_sl[7:2]; //B_Sd[7:2];
-				HsyncOut = vga_hs_sl; //Hsync_Sd;
-				VsyncOut = vga_vs_sl; //Vsync_Sd;
+			// 4'h5, 4'h6, 4'h7, 4'hD, 4'hE, 4'hF: begin //Scandoubler modes
+			// 	Rout = vga_data_sl[23:18]; //R_Sd[7:2];
+			// 	Gout = vga_data_sl[15:10]; //G_Sd[7:2];
+			// 	Bout = vga_data_sl[7:2]; //B_Sd[7:2];
+			// 	HsyncOut = vga_hs_sl; //Hsync_Sd;
+			// 	VsyncOut = vga_vs_sl; //Vsync_Sd;
+			// 	BLANKnOut = 1'b1;
+			// end
+			4'h5, 4'h6, 4'h7, 4'hD, 4'hE, 4'hF: begin //Scandoubler modes Old Scandoubler module
+				Rout = R_Sd;
+				Gout = G_Sd;
+				Bout = B_Sd;
+				HsyncOut = Hsync_Sd;
+				VsyncOut = Vsync_Sd;
 				BLANKnOut = 1'b1;
 			end
 			default: begin
@@ -291,67 +299,100 @@ module openFPGA_Pocket_Analogizer #(parameter MASTER_CLK_FREQ=50_000_000, parame
 	);
 
 	wire ce_pix_Sd /* synthesis keep */;
-	scandoubler_2 #(.LENGTH(LINE_LENGTH), .HALF_DEPTH(0)) sd
-	(
-		.clk_vid(i_clk),
-		.hq2x(fx[2]),
+// 	scandoubler_2 #(.LENGTH(LINE_LENGTH), .HALF_DEPTH(0)) sd
+// 	(
+// 		.clk_vid(i_clk),
+// 		.hq2x(fx[2]),
 
-		.ce_pix(ce_pix),
-		.hs_in(Hsync),
-		.vs_in(Vsync),
+// 		.ce_pix(ce_pix),
+// 		.hs_in(Hsync),
+// 		.vs_in(Vsync),
+// 		.hb_in(Hblank),
+// 		.vb_in(Vblank),
+// 		.r_in({R[7:0]&{8{BLANKn}}}),
+// 		.g_in({G[7:0]&{8{BLANKn}}}),
+// 		.b_in({B[7:0]&{8{BLANKn}}}),
+
+// 		.ce_pix_out(ce_pix_Sd),
+// 		.hs_out(Hsync_Sd),
+// 		.vs_out(Vsync_Sd),
+// 		.hb_out(Hblank_Sd),
+// 		.vb_out(Vblank_Sd),
+// 		.r_out(R_Sd),
+// 		.g_out(G_Sd),
+// 		.b_out(B_Sd)
+// 	);
+
+// 	reg Hsync_SL, Vsync_SL, Hblank_SL, Vblank_SL /* synthesis preserve */;
+// 	reg [7:0] R_SL, G_SL, B_SL /* synthesis preserve */;
+// 	reg CE_PIX_SL, DE_SL /* synthesis preserve */;
+
+// 	always @(posedge video_clk) begin
+// 		Hsync_SL <= (scandoubler) ? Hsync_Sd : Hsync;
+// 		Vsync_SL <= (scandoubler) ? Vsync_Sd : Vsync;
+// 		Hblank_SL <= (scandoubler) ? Hblank_Sd : Hblank;
+// 		Vblank_SL <= (scandoubler) ? Vblank_Sd : Vblank;
+// 		R_SL <= (scandoubler) ? R_Sd    : {R[7:0]&{8{BLANKn}}};
+// 		G_SL <= (scandoubler) ? G_Sd    : {G[7:0]&{8{BLANKn}}};
+// 		B_SL <= (scandoubler) ? B_Sd    : {B[7:0]&{8{BLANKn}}};
+// 		CE_PIX_SL <= (scandoubler) ? ce_pix_Sd : ce_pix;
+// 		DE_SL <= BLANKn;
+// 	end
+
+
+// wire [23:0] vga_data_sl /* synthesis keep */;
+// wire        vga_vs_sl, vga_hs_sl /* synthesis keep */;
+// scanlines_analogizer #(0) VGA_scanlines
+// (
+// 	.clk(video_clk),
+
+// 	.scanlines(fx[1:0]),
+// 	//.din(de_emu ? {R_SL, G_SL,B_SL} : 24'd0),
+// 	.din({R_SL, G_SL,B_SL}),
+// 	.hs_in(Hsync_SL),
+// 	.vs_in(Vsync_SL),
+// 	.de_in(DE_SL),
+// 	.ce_in(CE_PIX_SL),
+
+// 	.dout(vga_data_sl),
+// 	.hs_out(vga_hs_sl),
+// 	.vs_out(vga_vs_sl),
+// 	.de_out(),
+// 	.ce_out()
+// );
+
+	//Using old scandoubler code for PC Engine CD core
+	scandoubler sc_video
+	(
+		// system interface
+		.clk_sys(i_clk),
+		.bypass(1'b0),
+
+		// Pixelclock
+		.ce_divider(3'd7), // 0 - clk_sys/4, 1 - clk_sys/2, 2 - clk_sys/3, 3 - clk_sys/4, etc.
+		//.ce_divider(3'd0), // 0 - clk_sys/4, 1 - clk_sys/2, 2 - clk_sys/3, 3 - clk_sys/4, etc.
+		.pixel_ena(), //output
+		.scanlines(fx[1:0]), // scanlines (00-none 01-25% 10-50% 11-75%)
+
+		// shifter video interface
 		.hb_in(Hblank),
 		.vb_in(Vblank),
-		.r_in({R[7:0]&{8{BLANKn}}}),
-		.g_in({G[7:0]&{8{BLANKn}}}),
-		.b_in({B[7:0]&{8{BLANKn}}}),
+		.hs_in(Hsync),
+		//.hs_in(delayed_hsync[1]),
+		.vs_in(Vsync),
+		.r_in({R[7:2]&{6{BLANKn}}}),
+		.g_in({G[7:2]&{6{BLANKn}}}),
+		.b_in({B[7:2]&{6{BLANKn}}}),
 
-		.ce_pix_out(ce_pix_Sd),
-		.hs_out(Hsync_Sd),
-		.vs_out(Vsync_Sd),
+		// output interface
 		.hb_out(Hblank_Sd),
 		.vb_out(Vblank_Sd),
+		.hs_out(Hsync_Sd),
+		.vs_out(Vsync_Sd),
 		.r_out(R_Sd),
 		.g_out(G_Sd),
 		.b_out(B_Sd)
 	);
-
-	reg Hsync_SL, Vsync_SL, Hblank_SL, Vblank_SL /* synthesis preserve */;
-	reg [7:0] R_SL, G_SL, B_SL /* synthesis preserve */;
-	reg CE_PIX_SL, DE_SL /* synthesis preserve */;
-
-	always @(posedge video_clk) begin
-		Hsync_SL <= (scandoubler) ? Hsync_Sd : Hsync;
-		Vsync_SL <= (scandoubler) ? Vsync_Sd : Vsync;
-		Hblank_SL <= (scandoubler) ? Hblank_Sd : Hblank;
-		Vblank_SL <= (scandoubler) ? Vblank_Sd : Vblank;
-		R_SL <= (scandoubler) ? R_Sd    : {R[7:0]&{8{BLANKn}}};
-		G_SL <= (scandoubler) ? G_Sd    : {G[7:0]&{8{BLANKn}}};
-		B_SL <= (scandoubler) ? B_Sd    : {B[7:0]&{8{BLANKn}}};
-		CE_PIX_SL <= (scandoubler) ? ce_pix_Sd : ce_pix;
-		DE_SL <= BLANKn;
-	end
-
-
-wire [23:0] vga_data_sl /* synthesis keep */;
-wire        vga_vs_sl, vga_hs_sl /* synthesis keep */;
-scanlines_analogizer #(0) VGA_scanlines
-(
-	.clk(video_clk),
-
-	.scanlines(fx[1:0]),
-	//.din(de_emu ? {R_SL, G_SL,B_SL} : 24'd0),
-	.din({R_SL, G_SL,B_SL}),
-	.hs_in(Hsync_SL),
-	.vs_in(Vsync_SL),
-	.de_in(DE_SL),
-	.ce_in(CE_PIX_SL),
-
-	.dout(vga_data_sl),
-	.hs_out(vga_hs_sl),
-	.vs_out(vga_vs_sl),
-	.de_out(),
-	.ce_out()
-);
 
 
 	//infer tri-state buffers for cartridge data signals
